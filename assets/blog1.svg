@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250" width="400" height="250">
+  <rect width="400" height="250" fill="#141619"/>
+  <rect x="30" y="30" width="340" height="190" rx="8" fill="#1F2226"/>
+  <path d="M60 160 L120 110 L180 140 L240 80 L300 120 L340 70" fill="none" stroke="#D4FF00" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="240" cy="80" r="6" fill="#D4FF00"/>
+  <text x="60" y="70" font-family="'Space Grotesk', sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">GOOGLE ANALYTICS 4</text>
+</svg>
