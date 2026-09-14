@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 7. Contact Form Handling Logic
+  // 7. Contact Form Handling Logic (WhatsApp Redirection Integration)
   const contactForm = document.getElementById('contact-page-form');
   const responseBox = document.getElementById('form-response-msg');
   const submitBtn = document.getElementById('form-submit-btn');
@@ -211,17 +211,30 @@ document.addEventListener('DOMContentLoaded', () => {
       // Indicate loading state
       const originalBtnText = submitBtn.innerHTML;
       submitBtn.disabled = true;
-      submitBtn.innerHTML = 'SENDING...';
+      submitBtn.innerHTML = 'CONNECTING TO WHATSAPP...';
+
+      // Format WhatsApp Message
+      const whatsappNumber = '919400810886';
+      const whatsappText = `*New Website Inquiry*\n\n` +
+        `*Name:* ${name}\n` +
+        `*Email:* ${email}\n` +
+        `*Subject:* ${subject}\n\n` +
+        `*Message:* ${message}`;
+
+      const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(whatsappText)}`;
 
       setTimeout(() => {
         responseBox.className = 'form-response-box success';
-        responseBox.innerHTML = '<strong>MESSAGE SENT.</strong><br>Thanks for reaching out, ' + name + '! I\'ll get back to you within 24 hours.';
+        responseBox.innerHTML = '<strong>REDIRECTING TO WHATSAPP...</strong><br>Opening WhatsApp to send your inquiry directly to Ahammed Rishan.';
         responseBox.style.display = 'block';
         
+        // Open WhatsApp in a new tab / app window
+        window.open(whatsappUrl, '_blank');
+
         contactForm.reset();
         submitBtn.disabled = false;
         submitBtn.innerHTML = originalBtnText;
-      }, 800);
+      }, 500);
     });
   }
 
