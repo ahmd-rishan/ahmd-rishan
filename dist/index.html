@@ -16,8 +16,17 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
-  <script type="module" crossorigin src="/assets/main-C8DT-SI0.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/main-DLmcio7q.css">
+  <script>
+    (function() {
+      try {
+        if (localStorage.getItem('ahammed_rishan_theme') === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <script type="module" crossorigin src="/assets/main-BpkFxvDK.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/main-0Y5TSGNB.css">
 </head>
 <body>
 
@@ -33,11 +42,15 @@
         <a href="index.html" class="nav-link active">HOME</a>
         <a href="about.html" class="nav-link">ABOUT</a>
         <a href="services.html" class="nav-link">SERVICES</a>
-        <a href="index.html#work" class="nav-link">WORK</a>
+        <a href="work.html" class="nav-link">PORTFOLIO</a>
         <a href="contact.html" class="nav-link">CONTACT</a>
       </nav>
 
       <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light and dark mode" title="Toggle theme">
+          <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
         <a href="contact.html" class="btn btn-pill btn-dark">LET'S TALK <span class="arrow">↗</span></a>
         <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation menu">
           <span></span><span></span>
@@ -51,7 +64,7 @@
         <a href="index.html" class="mobile-link active">HOME</a>
         <a href="about.html" class="mobile-link">ABOUT</a>
         <a href="services.html" class="mobile-link">SERVICES</a>
-        <a href="index.html#work" class="mobile-link">WORK</a>
+        <a href="work.html" class="mobile-link">PORTFOLIO</a>
         <a href="contact.html" class="mobile-link">CONTACT</a>
         <a href="contact.html" class="btn btn-pill btn-lime mobile-cta">LET'S TALK ↗</a>
       </nav>
@@ -85,10 +98,6 @@
 
           <div class="hero-actions">
             <a href="#contact" class="btn btn-pill btn-dark">START A PROJECT <span class="arrow">↗</span></a>
-            <button class="btn-video" id="play-video-btn" aria-label="Watch video">
-              <span class="play-icon">▶</span>
-              <span class="video-label">WATCH VIDEO <small>(1:30)</small></span>
-            </button>
           </div>
         </div>
 
@@ -177,57 +186,100 @@
       <div class="container">
         <div class="section-header-flex">
           <div>
-            <div class="section-label">02 / SELECTED WORK</div>
+            <div class="section-label">02 / SELECTED PORTFOLIO</div>
             <h2 class="section-title">REAL BRANDS.<br>REAL GROWTH.</h2>
           </div>
 
           <div class="header-right-controls">
             <p class="header-desc">A few projects that turned ideas into measurable results.</p>
             <div class="controls-wrapper">
-              <button class="circle-btn" id="prev-work-btn" aria-label="Previous work">←</button>
-              <button class="circle-btn" id="next-work-btn" aria-label="Next work">→</button>
-              <a href="#contact" class="btn btn-pill btn-dark">VIEW ALL MORE <span class="arrow">↗</span></a>
+              <a href="work.html" class="btn btn-pill btn-dark">VIEW ALL PROJECTS <span class="arrow">↗</span></a>
             </div>
           </div>
         </div>
 
         <div class="work-grid" id="work-grid">
-          <!-- Project 01 -->
-          <article class="work-card">
-            <div class="work-card-num">01</div>
-            <div class="work-card-img-holder">
-              <img src="/assets/project_chrd-BUnqTqDV.jpg" alt="CHRD Kerala Training Academy Website Mockup" class="work-img">
+          <!-- Project 01: CHRD Kerala -->
+          <article class="work-editorial-card" data-category="web">
+            <div class="work-card-top-row">
+              <div class="work-card-meta">
+                <span class="work-card-cat">WEB DEVELOPMENT</span>
+                <span class="work-card-client">CHRD KERALA</span>
+              </div>
             </div>
-            <div class="work-card-content">
-              <h3 class="work-title">CHRD KERALA</h3>
-              <p class="work-tags">Digital Strategy &nbsp;/&nbsp; Web Development &nbsp;/&nbsp; Social Media</p>
-              <a href="#contact" class="work-link">VIEW CASE STUDY <span class="arrow">↗</span></a>
+            <h2 class="work-card-title">CHRD KERALA</h2>
+            <div class="work-card-outcomes">
+              <span class="outcome-tag">✓ Custom Mobile-First UI</span>
+              <span class="outcome-tag">✓ Fast Page Load Speeds</span>
+              <span class="outcome-tag">✓ Course Portal Architecture</span>
+            </div>
+            <div class="work-card-action">
+              <button class="btn btn-pill btn-dark view-project-btn"
+                data-title="CHRD KERALA"
+                data-category="WEB DEVELOPMENT"
+                data-client="CHRD KERALA"
+                data-image="./assets/project_chrd.jpg"
+                data-desc="A high-performance educational platform designed and developed for Centre for Human Resource Development (CHRD), empowering students and educators across Kerala with course announcements, resources, and community registration tools."
+                data-outcomes="Custom Mobile-First UI, Fast Page Load Speeds, Course Portal Architecture"
+                data-live-url="https://www.chrdkerala.in/">
+                VIEW PROJECT <span class="arrow">↗</span>
+              </button>
             </div>
           </article>
 
-          <!-- Project 02 -->
-          <article class="work-card">
-            <div class="work-card-num">02</div>
-            <div class="work-card-img-holder">
-              <img src="/assets/project_casabia-D2e7UxA_.jpg" alt="Casabia Designs Mobile App & Branding" class="work-img">
+          <!-- Project 02: Casabia Designs -->
+          <article class="work-editorial-card" data-category="branding">
+            <div class="work-card-top-row">
+              <div class="work-card-meta">
+                <span class="work-card-cat">BRANDING & DESIGN</span>
+                <span class="work-card-client">CASABIA DESIGNS</span>
+              </div>
             </div>
-            <div class="work-card-content">
-              <h3 class="work-title">CASABIA DESIGNS</h3>
-              <p class="work-tags">Brand Strategy &nbsp;/&nbsp; Social Media &nbsp;/&nbsp; Digital Marketing</p>
-              <a href="#contact" class="work-link">VIEW CASE STUDY <span class="arrow">↗</span></a>
+            <h2 class="work-card-title">CASABIA DESIGNS</h2>
+            <div class="work-card-outcomes">
+              <span class="outcome-tag">✓ Fashion Brand Identity</span>
+              <span class="outcome-tag">✓ Custom Tailoring Showcase</span>
+              <span class="outcome-tag">✓ Social & Lead Capture Funnel</span>
+            </div>
+            <div class="work-card-action">
+              <button class="btn btn-pill btn-dark view-project-btn"
+                data-title="CASABIA DESIGNS"
+                data-category="BRANDING & DESIGN"
+                data-client="CASABIA DESIGNS"
+                data-image="./assets/project_casabia.jpg"
+                data-desc="Digital marketing strategy, visual identity, and social brand showcase for Casabia Designs — a premier fashion design studio specializing in customized tailoring, costume designing, fabric dyeing, and bespoke hand work."
+                data-outcomes="Fashion Brand Identity, Custom Tailoring Showcase, Social & Lead Capture Funnel"
+                data-live-url="https://linktr.ee/casabia_designs">
+                VIEW PROJECT <span class="arrow">↗</span>
+              </button>
             </div>
           </article>
 
-          <!-- Project 03 -->
-          <article class="work-card">
-            <div class="work-card-num">03</div>
-            <div class="work-card-img-holder">
-              <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNjAwIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCI+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI2MDAiIGZpbGw9IiMxNDE1MTciLz4KICA8IS0tIFNsYXRlIHBsYXRmb3JtIGJhY2tncm91bmQgLS0+CiAgPHBhdGggZD0iTTUwIDQyMCBMNzUwIDQyMCBMNzAwIDU2MCBMMTAwIDU2MCBaIiBmaWxsPSIjMjAyMjI1Ii8+CiAgPCEtLSBFbGF0b3QgUG91Y2ggTW9ja3VwIC0tPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI2MCwgMTAwKSI+CiAgICA8cGF0aCBkPSJNNDAgMjAgTDI0MCAyMCBMMjYwIDM4MCBMMjAgMzgwIFoiIGZpbGw9IiNEOUM1QTAiLz4KICAgIDxwYXRoIGQ9Ik00MCAyMCBMMjQwIDIwIEwyMzAgNTAgTDUwIDUwIFoiIGZpbGw9IiNCQUEzN0IiLz4KICAgIDxyZWN0IHg9IjYwIiB5PSIxMDAiIHdpZHRoPSIxNjAiIGhlaWdodD0iMjIwIiByeD0iOCIgZmlsbD0iIzFDMUQxRiIvPgogICAgPHRleHQgeD0iMTQwIiB5PSIxNDUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSInU3BhY2UgR3JvdGVzaycsIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiNENEZGMDAiPkVMQVRPVDwvdGV4dD4KICAgIDx0ZXh0IHg9IjE0MCIgeT0iMTcwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iJ1NwYWNlIEdyb3Rlc2snLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmaWxsPSIjRkZGRkZGIiBsZXR0ZXItc3BhY2luZz0iMiI+Rk9PRFM8L3RleHQ+CiAgICA8Y2lyY2xlIGN4PSIxNDAiIGN5PSIyMjAiIHI9IjMwIiBmaWxsPSIjMkEyQzMwIiBzdHJva2U9IiNENEZGMDAiIHN0cm9rZS13aWR0aD0iMiIvPgogICAgPHRleHQgeD0iMTQwIiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiNENEZGMDAiPvCfjL88L3RleHQ+CiAgICA8dGV4dCB4PSIxNDAiIHk9IjI4MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZpbGw9IiNBMEE1QUQiPk9SR0FOSUMgJmFtcDsgTkFUVVJBTDwvdGV4dD4KICA8L2c+CiAgPCEtLSBTcGljZSBib3dsIGxlZnQgLS0+CiAgPGVsbGlwc2UgY3g9IjIwMCIgY3k9IjQ0MCIgcng9IjcwIiByeT0iMzUiIGZpbGw9IiMyQTJDMzAiLz4KICA8ZWxsaXBzZSBjeD0iMjAwIiBjeT0iNDM1IiByeD0iNjAiIHJ5PSIyNSIgZmlsbD0iI0M4NkQzQiIvPgogIDwhLS0gQm93bCByaWdodCAtLT4KICA8ZWxsaXBzZSBjeD0iNTgwIiBjeT0iNDUwIiByeD0iODAiIHJ5PSI0MCIgZmlsbD0iIzJBMkMzMCIvPgogIDxlbGxpcHNlIGN4PSI1ODAiIGN5PSI0NDUiIHJ4PSI3MCIgcnk9IjMwIiBmaWxsPSIjRTVBQTQyIi8+Cjwvc3ZnPg==" alt="Elatot Foods Product Packaging & Branding" class="work-img">
+          <!-- Project 03: Elatot Foods -->
+          <article class="work-editorial-card" data-category="web">
+            <div class="work-card-top-row">
+              <div class="work-card-meta">
+                <span class="work-card-cat">E-COMMERCE & WEB</span>
+                <span class="work-card-client">ELATOT FOODS</span>
+              </div>
             </div>
-            <div class="work-card-content">
-              <h3 class="work-title">ELATOT FOODS</h3>
-              <p class="work-tags">Branding &nbsp;/&nbsp; Digital Presence &nbsp;/&nbsp; Marketing</p>
-              <a href="#contact" class="work-link">VIEW CASE STUDY <span class="arrow">↗</span></a>
+            <h2 class="work-card-title">ELATOT FOODS</h2>
+            <div class="work-card-outcomes">
+              <span class="outcome-tag">✓ WhatsApp Integrated E-Commerce</span>
+              <span class="outcome-tag">✓ Product Catalog Showcase</span>
+              <span class="outcome-tag">✓ Instant Order Funnel</span>
+            </div>
+            <div class="work-card-action">
+              <button class="btn btn-pill btn-dark view-project-btn"
+                data-title="ELATOT FOODS"
+                data-category="E-COMMERCE & WEB"
+                data-client="ELATOT FOODS"
+                data-image="./assets/project_elatot.jpg"
+                data-desc="A WhatsApp-integrated e-commerce website and product showcase built for Elatot Foods. Designed to present wholesome natural baby food products, brand story, and drive instant customer orders directly through integrated WhatsApp messaging."
+                data-outcomes="WhatsApp Integrated E-Commerce, Product Catalog Showcase, Instant Order Funnel"
+                data-live-url="http://elatotfoods.in/">
+                VIEW PROJECT <span class="arrow">↗</span>
+              </button>
             </div>
           </article>
         </div>
@@ -520,7 +572,7 @@
           <a href="index.html">HOME</a>
           <a href="about.html">ABOUT</a>
           <a href="services.html">SERVICES</a>
-          <a href="index.html#work">WORK</a>
+          <a href="work.html">PORTFOLIO</a>
           <a href="contact.html">CONTACT</a>
         </nav>
 
@@ -539,16 +591,28 @@
     </div>
   </footer>
 
-  <!-- Video Modal -->
-  <div class="video-modal" id="video-modal" aria-hidden="true">
-    <div class="video-modal-overlay" id="modal-overlay"></div>
-    <div class="video-modal-content">
-      <button class="modal-close" id="modal-close" aria-label="Close video modal">✕</button>
-      <div class="video-container">
-        <div class="video-placeholder">
-          <h3>AHAMMED RISHAN®</h3>
-          <p>Digital Marketing &amp; Web Development Showcase (1:30)</p>
-          <div class="fake-play-btn">▶</div>
+  <!-- PROJECT DETAILS POPUP MODAL -->
+  <div class="project-modal-overlay" id="project-modal" aria-hidden="true" role="dialog" aria-modal="true" tabindex="-1">
+    <div class="project-modal-container">
+      <button class="project-modal-close" id="modal-close-btn" aria-label="Close project modal">&times;</button>
+
+      <div class="project-modal-media-wrapper">
+        <img src="" alt="" id="modal-image" class="project-modal-img">
+      </div>
+
+      <div class="project-modal-content">
+        <div class="project-modal-meta-row">
+          <span class="work-card-cat" id="modal-cat"></span>
+          <span class="project-modal-client" id="modal-client"></span>
+        </div>
+        <h2 class="project-modal-title" id="modal-title"></h2>
+        <p class="project-modal-desc" id="modal-desc"></p>
+        <div class="project-modal-outcomes" id="modal-outcomes"></div>
+
+        <div class="project-modal-footer">
+          <a href="#" target="_blank" rel="noopener" class="btn btn-pill btn-dark modal-explore-btn" id="modal-explore-btn">
+            EXPLORE PROJECT <span class="arrow">↗</span>
+          </a>
         </div>
       </div>
     </div>

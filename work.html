@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PORTFOLIO — AHAMMED RISHAN® | Selected Projects & Case Studies</title>
+  <meta name="description" content="Explore selected client web development, branding, and e-commerce projects by Ahammed Rishan. Clean architecture, high-conversion UI, and measurable growth.">
+  <meta name="keywords" content="Ahammed Rishan Portfolio, Portfolio Projects, CHRD Kerala, Casabia Designs, Elatot Foods, Silent Slopes Resort, CEOUL Skin Care, Web Development Kerala">
+  <meta property="og:title" content="PORTFOLIO — AHAMMED RISHAN® | Selected Portfolio & Case Studies">
+  <meta property="og:description" content="Discover real projects, web applications, performance marketing campaigns, and brand experiences built for measurable growth.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ahammedrishan.com/work.html">
+
+  <!-- Google Fonts: Space Grotesk, Inter, Caveat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    (function() {
+      try {
+        if (localStorage.getItem('ahammed_rishan_theme') === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+  <!-- 1. NAVIGATION -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-brand" aria-label="Ahammed Rishan Home">
+        <img src="./assets/logo-dark.svg" alt="AHAMMED RISHAN® Logo" class="logo-img logo-dark">
+        <img src="./assets/logo-white.svg" alt="AHAMMED RISHAN® Logo" class="logo-img logo-white">
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">HOME</a>
+        <a href="about.html" class="nav-link">ABOUT</a>
+        <a href="services.html" class="nav-link">SERVICES</a>
+        <a href="work.html" class="nav-link active">PORTFOLIO</a>
+        <a href="contact.html" class="nav-link">CONTACT</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light and dark mode" title="Toggle theme">
+          <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <a href="contact.html" class="btn btn-pill btn-dark">LET'S TALK <span class="arrow">↗</span></a>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation menu">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-menu" id="mobile-menu">
+      <nav class="mobile-nav-links">
+        <a href="index.html" class="mobile-link">HOME</a>
+        <a href="about.html" class="mobile-link">ABOUT</a>
+        <a href="services.html" class="mobile-link">SERVICES</a>
+        <a href="work.html" class="mobile-link active">PORTFOLIO</a>
+        <a href="contact.html" class="mobile-link">CONTACT</a>
+        <a href="contact.html" class="btn btn-pill btn-lime mobile-cta">LET'S TALK ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="work-hero-section light-bg">
+      <div class="container">
+        <div class="work-hero-header">
+          <div class="section-label">02 / SELECTED PORTFOLIO</div>
+          <h1 class="work-hero-title">
+            SELECTED<br>
+            <span class="accent-text">PORTFOLIO.</span>
+          </h1>
+          <p class="work-hero-subtext">
+            A curated showcase of websites, web applications, e-commerce platforms, and brand experiences engineered for real-world impact and measurable business growth.
+          </p>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="work-filter-bar" id="work-filter-bar">
+          <button class="work-filter-btn active" data-filter="all">ALL (5)</button>
+          <button class="work-filter-btn" data-filter="web">WEB DEVELOPMENT (4)</button>
+          <button class="work-filter-btn" data-filter="branding">BRANDING & DESIGN (1)</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECT SHOWCASE LIST / MINIMAL EDITORIAL GRID -->
+    <section class="work-showcase-section light-bg">
+      <div class="container">
+        <div class="work-editorial-list" id="work-editorial-list">
+
+          <!-- Project 01: CHRD Kerala -->
+          <article class="work-editorial-card" data-category="web">
+            <div class="work-card-top-row">
+              <div class="work-card-meta">
+                <span class="work-card-cat">WEB DEVELOPMENT</span>
+                <span class="work-card-client">CHRD KERALA</span>
+              </div>
+            </div>
+            <h2 class="work-card-title">CHRD KERALA</h2>
+            <p class="work-card-desc">
+              A high-performance educational platform designed and developed for Centre for Human Resource Development (CHRD), empowering students and educators across Kerala with course announcements, resources, and community registration tools.
+            </p>
+            <div class="work-card-outcomes">
+              <span class="outcome-tag">✓ Custom Mobile-First UI</span>
+              <span class="outcome-tag">✓ Fast Page Load Speeds</span>
+              <span class="outcome-tag">✓ Course Portal Architecture</span>
+            </div>
+            <div class="work-card-action">
+              <button class="btn btn-pill btn-dark view-project-btn"
+                data-title="CHRD KERALA"
+                data-category="WEB DEVELOPMENT"
+                data-client="CHRD KERALA"
+                data-image="./assets/project_chrd.jpg"
+                data-desc="A high-performance educational platform designed and developed for Centre for Human Resource Development (CHRD), empowering students and educators across Kerala with course announcements, resources, and community registration tools."
+                data-outcomes="Custom Mobile-First UI, Fast Page Load Speeds, Course Portal Architecture"
+                data-live-url="https://www.chrdkerala.in/">
+                VIEW PROJECT <span class="arrow">↗</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Project 02: Casabia Designs -->
+          <article class="work-editorial-card" data-category="branding">
+            <div class="work-card-top-row">
+              <div class="work-card-meta">
+                <span class="work-card-cat">BRANDING & DESIGN</span>
+                <span class="work-card-client">CASABIA DESIGNS</span>
+              </div>
+            </div>
+            <h2 class="work-card-title">CASABIA DESIGNS</h2>
+            <p class="work-card-desc">
+              Digital marketing strategy, visual identity, and social brand showcase for Casabia Designs — a premier fashion design studio specializing in customized tailoring, costume designing, fabric dyeing, and bespoke hand work.
+            </p>
+            <div class="work-card-outcomes">
+              <span class="outcome-tag">✓ Fashion Brand Identity</span>
+              <span class="outcome-tag">✓ Custom Tailoring Showcase</span>
+              <span class="outcome-tag">✓ Social & Lead Capture Funnel</span>
+            </div>
+            <div class="work-card-action">
+              <button class="btn btn-pill btn-dark view-project-btn"
+                data-title="CASABIA DESIGNS"
+                data-category="BRANDING & DESIGN"
+                data-client="CASABIA DESIGNS"
+                data-image="./assets/project_casabia.jpg"
+                data-desc="Digital marketing strategy, visual identity, and social brand showcase for Casabia Designs — a premier fashion design studio specializing in customized tailoring, costume designing, fabric dyeing, and bespoke hand work."
+                data-outcomes="Fashion Brand Identity, Custom Tailoring Showcase, Social & Lead Capture Funnel"
+                data-live-url="https://linktr.ee/casabia_designs">
+                VIEW PROJECT <span class="arrow">↗</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Project 03: Elatot Foods -->
+          <article class="work-editorial-card" data-category="web">
+            <div class="work-card-top-row">
+              <div class="work-card-meta">
+                <span class="work-card-cat">E-COMMERCE & WEB</span>
+                <span class="work-card-client">ELATOT FOODS</span>
+              </div>
+            </div>
+            <h2 class="work-card-title">ELATOT FOODS</h2>
+            <p class="work-card-desc">
+              A WhatsApp-integrated e-commerce website and product showcase built for Elatot Foods. Designed to present wholesome natural baby food products, brand story, and drive instant customer orders directly through integrated WhatsApp messaging.
+            </p>
+            <div class="work-card-outcomes">
+              <span class="outcome-tag">✓ WhatsApp Integrated E-Commerce</span>
+              <span class="outcome-tag">✓ Product Catalog Showcase</span>
+              <span class="outcome-tag">✓ Instant Order Funnel</span>
+            </div>
+            <div class="work-card-action">
+              <button class="btn btn-pill btn-dark view-project-btn"
+                data-title="ELATOT FOODS"
+                data-category="E-COMMERCE & WEB"
+                data-client="ELATOT FOODS"
+                data-image="./assets/project_elatot.jpg"
+                data-desc="A WhatsApp-integrated e-commerce website and product showcase built for Elatot Foods. Designed to present wholesome natural baby food products, brand story, and drive instant customer orders directly through integrated WhatsApp messaging."
+                data-outcomes="WhatsApp Integrated E-Commerce, Product Catalog Showcase, Instant Order Funnel"
+                data-live-url="http://elatotfoods.in/">
+                VIEW PROJECT <span class="arrow">↗</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Project 04: Silent Slopes Resort -->
+          <article class="work-editorial-card" data-category="web">
+            <div class="work-card-top-row">
+              <div class="work-card-meta">
+                <span class="work-card-cat">WEB DEVELOPMENT</span>
+                <span class="work-card-client">SILENT SLOPES WAYANAD</span>
+              </div>
+            </div>
+            <h2 class="work-card-title">SILENT SLOPES RESORT</h2>
+            <p class="work-card-desc">
+              A luxury hospitality website designed for Silent Slopes Resort in Wayanad, Kerala. Crafted with a premium aesthetic, smooth micro-animations, serene imagery, and intuitive navigation for effortless room reservation inquiries.
+            </p>
+            <div class="work-card-outcomes">
+              <span class="outcome-tag">✓ Premium Hospitality UI</span>
+              <span class="outcome-tag">✓ Smooth Motion Animations</span>
+              <span class="outcome-tag">✓ Simple & Intuitive Navigation</span>
+            </div>
+            <div class="work-card-action">
+              <button class="btn btn-pill btn-dark view-project-btn"
+                data-title="SILENT SLOPES RESORT"
+                data-category="WEB DEVELOPMENT"
+                data-client="SILENT SLOPES WAYANAD"
+                data-image="./assets/project_silentslopes.jpg"
+                data-desc="A luxury hospitality website designed for Silent Slopes Resort in Wayanad, Kerala. Crafted with a premium aesthetic, smooth micro-animations, serene imagery, and intuitive navigation for effortless room reservation inquiries."
+                data-outcomes="Premium Hospitality UI, Smooth Motion Animations, Simple & Intuitive Navigation"
+                data-live-url="https://silentslopesresort.com/">
+                VIEW PROJECT <span class="arrow">↗</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Project 05: CEOUL Skin Care -->
+          <article class="work-editorial-card" data-category="web">
+            <div class="work-card-top-row">
+              <div class="work-card-meta">
+                <span class="work-card-cat">E-COMMERCE & WEB</span>
+                <span class="work-card-client">INTERNATIONAL CLIENT (OMAN)</span>
+              </div>
+            </div>
+            <h2 class="work-card-title">CEOUL SKIN CARE</h2>
+            <p class="work-card-desc">
+              An international e-commerce platform engineered for CEOUL Skin Care, delivering premium global skincare brands (COSRX, Matkas, Clean It Zero) across Oman and the Middle East with multi-currency support, skin-concern filtering, and high-conversion sales workflows.
+            </p>
+            <div class="work-card-outcomes">
+              <span class="outcome-tag">✓ International E-Commerce Platform</span>
+              <span class="outcome-tag">✓ Skin Concern Product Filtering</span>
+              <span class="outcome-tag">✓ Multi-Currency & Regional Checkout</span>
+            </div>
+            <div class="work-card-action">
+              <button class="btn btn-pill btn-dark view-project-btn"
+                data-title="CEOUL SKIN CARE"
+                data-category="E-COMMERCE & WEB"
+                data-client="INTERNATIONAL CLIENT (OMAN)"
+                data-image="./assets/project_ceoul.jpg"
+                data-desc="An international e-commerce platform engineered for CEOUL Skin Care, delivering premium global skincare brands (COSRX, Matkas, Clean It Zero) across Oman and the Middle East with multi-currency support, skin-concern filtering, and high-conversion sales workflows."
+                data-outcomes="International E-Commerce Platform, Skin Concern Product Filtering, Multi-Currency & Regional Checkout"
+                data-live-url="http://ceoulapp.com/">
+                VIEW PROJECT <span class="arrow">↗</span>
+              </button>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CLOSING CTA SECTION -->
+    <section id="contact" class="cta-section dark-bg">
+      <div class="container cta-container">
+        <div class="section-label">09 / LET'S WORK TOGETHER</div>
+
+        <div class="cta-grid">
+          <div class="cta-left">
+            <h2 class="cta-title">
+              HAVE A PROJECT?<br>
+              LET'S BUILD SOMETHING USEFUL.
+            </h2>
+          </div>
+
+          <div class="cta-right">
+            <p class="cta-subtext">Ideas are everywhere. Execution makes the difference.</p>
+            <a href="contact.html" class="btn btn-pill btn-lime btn-large-cta">
+              START A CONVERSATION <span class="arrow">↗</span>
+            </a>
+            <a href="mailto:hello@ahammedrishan.com" class="cta-email-link">hello@ahammedrishan.com</a>
+          </div>
+
+          <div class="cta-annotation">
+            Good Brands Grow Here.
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer dark-bg">
+    <div class="container">
+      <div class="footer-top-row">
+        <div class="footer-brand-col">
+          <img src="./assets/logo-white.svg" alt="AHAMMED RISHAN®" class="footer-logo">
+          <p class="footer-role">DIGITAL MARKETER + WEB DEVELOPER</p>
+        </div>
+
+        <nav class="footer-nav">
+          <a href="index.html">HOME</a>
+          <a href="about.html">ABOUT</a>
+          <a href="services.html">SERVICES</a>
+          <a href="work.html">PORTFOLIO</a>
+          <a href="contact.html">CONTACT</a>
+        </nav>
+
+        <div class="footer-socials">
+          <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">INSTAGRAM</a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn">LINKEDIN</a>
+          <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">FACEBOOK</a>
+          <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube">YOUTUBE</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom-row">
+        <p class="copyright">&copy; 2026 AHAMMED RISHAN. ALL RIGHTS RESERVED.</p>
+        <p class="location-tag">MADE IN KERALA, INDIA</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- PROJECT DETAILS POPUP MODAL -->
+  <div class="project-modal-overlay" id="project-modal" aria-hidden="true" role="dialog" aria-modal="true" tabindex="-1">
+    <div class="project-modal-container">
+      <button class="project-modal-close" id="modal-close-btn" aria-label="Close project modal">&times;</button>
+
+      <div class="project-modal-media-wrapper">
+        <img src="" alt="" id="modal-image" class="project-modal-img">
+      </div>
+
+      <div class="project-modal-content">
+        <div class="project-modal-meta-row">
+          <span class="work-card-cat" id="modal-cat"></span>
+          <span class="project-modal-client" id="modal-client"></span>
+        </div>
+        <h2 class="project-modal-title" id="modal-title"></h2>
+        <p class="project-modal-desc" id="modal-desc"></p>
+        <div class="project-modal-outcomes" id="modal-outcomes"></div>
+
+        <div class="project-modal-footer">
+          <a href="#" target="_blank" rel="noopener" class="btn btn-pill btn-dark modal-explore-btn" id="modal-explore-btn">
+            EXPLORE PROJECT <span class="arrow">↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

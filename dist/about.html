@@ -14,8 +14,17 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
-  <script type="module" crossorigin src="/assets/main-C8DT-SI0.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/main-DLmcio7q.css">
+  <script>
+    (function() {
+      try {
+        if (localStorage.getItem('ahammed_rishan_theme') === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <script type="module" crossorigin src="/assets/main-BpkFxvDK.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/main-0Y5TSGNB.css">
 </head>
 <body>
 
@@ -31,11 +40,15 @@
         <a href="index.html" class="nav-link">HOME</a>
         <a href="about.html" class="nav-link active">ABOUT</a>
         <a href="services.html" class="nav-link">SERVICES</a>
-        <a href="index.html#work" class="nav-link">WORK</a>
+        <a href="work.html" class="nav-link">PORTFOLIO</a>
         <a href="contact.html" class="nav-link">CONTACT</a>
       </nav>
 
       <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light and dark mode" title="Toggle theme">
+          <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
         <a href="contact.html" class="btn btn-pill btn-dark">LET'S TALK <span class="arrow">↗</span></a>
         <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation menu">
           <span></span><span></span>
@@ -49,7 +62,7 @@
         <a href="index.html" class="mobile-link">HOME</a>
         <a href="about.html" class="mobile-link active">ABOUT</a>
         <a href="services.html" class="mobile-link">SERVICES</a>
-        <a href="index.html#work" class="mobile-link">WORK</a>
+        <a href="work.html" class="mobile-link">PORTFOLIO</a>
         <a href="contact.html" class="mobile-link">CONTACT</a>
         <a href="contact.html" class="btn btn-pill btn-lime mobile-cta">LET'S TALK ↗</a>
       </nav>
@@ -84,10 +97,6 @@
 
           <div class="hero-actions">
             <a href="#contact" class="btn btn-pill btn-dark">DOWNLOAD RESUME <span class="arrow">↗</span></a>
-            <button class="btn-video" id="play-video-btn" aria-label="Watch my story">
-              <span class="play-icon">▶</span>
-              <span class="video-label">WATCH MY STORY <small>(1:30)</small></span>
-            </button>
           </div>
         </div>
 
@@ -465,7 +474,7 @@
           <a href="index.html">HOME</a>
           <a href="about.html">ABOUT</a>
           <a href="services.html">SERVICES</a>
-          <a href="index.html#work">WORK</a>
+          <a href="work.html">PORTFOLIO</a>
           <a href="contact.html">CONTACT</a>
         </nav>
 
