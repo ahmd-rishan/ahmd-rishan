@@ -3655,6 +3655,135 @@ main.page-exiting {
 
 
 
+/* ==========================================================================
+   CONTACT FORM — LABELED FIELDS (REFERENCE DESIGN)
+   ========================================================================== */
 
+/* Form layout */
+.contact-dark-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
 
+/* 2-column grid row */
+.form-row-two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-field-labeled {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-field-labeled label {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--text-light-secondary);
+}
+
+/* Red asterisk for required */
+.req-star {
+  color: #ff4f4f;
+  margin-left: 2px;
+}
+
+/* Inputs inside labeled fields */
+.form-field-labeled input,
+.form-field-labeled textarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1.5px solid rgba(255, 255, 255, 0.14);
+  border-radius: 10px;
+  color: var(--text-light-primary);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  padding: 14px 16px;
+  outline: none;
+  transition: border-color 0.2s ease, background 0.2s ease;
+  resize: vertical;
+}
+
+.form-field-labeled input::placeholder,
+.form-field-labeled textarea::placeholder {
+  color: rgba(255, 255, 255, 0.28);
+}
+
+.form-field-labeled input:focus,
+.form-field-labeled textarea:focus {
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.09);
+}
+
+/* Custom select wrapper */
+.select-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.select-wrapper select {
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1.5px solid rgba(255, 255, 255, 0.14);
+  border-radius: 10px;
+  color: var(--text-light-primary);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  padding: 14px 40px 14px 16px;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.select-wrapper select option {
+  background: #1c1f23;
+  color: #fff;
+}
+
+.select-wrapper select:focus {
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.09);
+}
+
+/* Select arrow icon */
+.select-arrow {
+  position: absolute;
+  right: 14px;
+  pointer-events: none;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1;
+}
+
+/* Full-width send button */
+.btn-send-full {
+  width: 100%;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 16px;
+  border-radius: 10px;
+  margin-top: 4px;
+}
+
+/* Full-width form field */
+.form-field-labeled.full-width {
+  grid-column: 1 / -1;
+}
+
+/* Responsive: stack on mobile */
+@media (max-width: 640px) {
+  .form-row-two {
+    grid-template-columns: 1fr;
+  }
+}
 

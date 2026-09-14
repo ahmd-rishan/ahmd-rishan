@@ -290,29 +290,50 @@
 
         <!-- Right Side Contact Form -->
         <div class="contact-touch-right">
-          <form id="contact-page-form" class="contact-dark-form">
+          <form id="contact-page-form" class="contact-dark-form" novalidate>
+
             <div class="form-row-two">
-              <div class="form-field">
-                <input type="text" id="form-name" name="name" placeholder="Your Name *" required aria-label="Your Name">
+              <div class="form-field-labeled">
+                <label for="form-name">Name <span class="req-star">*</span></label>
+                <input type="text" id="form-name" name="name" placeholder="Name" required aria-label="Your Name">
               </div>
-              <div class="form-field">
-                <input type="email" id="form-email" name="email" placeholder="Your Email *" required aria-label="Your Email">
+              <div class="form-field-labeled">
+                <label for="form-email">Email <span class="req-star">*</span></label>
+                <input type="email" id="form-email" name="email" placeholder="Email" required aria-label="Your Email">
               </div>
             </div>
 
-            <div class="form-field full-width">
-              <input type="text" id="form-subject" name="subject" placeholder="Subject *" required aria-label="Subject">
+            <div class="form-row-two">
+              <div class="form-field-labeled">
+                <label for="form-phone">Phone Number <span class="req-star">*</span></label>
+                <input type="tel" id="form-phone" name="phone" placeholder="+91 XXXXX XXXXX" required aria-label="Your Phone Number">
+              </div>
+              <div class="form-field-labeled">
+                <label for="form-service">Service <span class="req-star">*</span></label>
+                <div class="select-wrapper">
+                  <select id="form-service" name="service" required aria-label="Select a Service">
+                    <option value="" disabled selected>Select a Service</option>
+                    <option value="Digital Strategy">Digital Strategy</option>
+                    <option value="SEO Services">SEO Services</option>
+                    <option value="Performance Marketing">Performance Marketing (Meta / Google Ads)</option>
+                    <option value="Social Media Marketing">Social Media Marketing</option>
+                    <option value="Content Strategy">Content Strategy</option>
+                    <option value="Web Development">Web Development</option>
+                    <option value="Other">Other</option>
+                  </select>
+                  <span class="select-arrow">▾</span>
+                </div>
+              </div>
             </div>
 
-            <div class="form-field full-width">
-              <textarea id="form-message" name="message" rows="5" placeholder="Your Message *" required aria-label="Your Message"></textarea>
+            <div class="form-field-labeled full-width">
+              <label for="form-message">Message <span class="req-star">*</span></label>
+              <textarea id="form-message" name="message" rows="5" placeholder="Message" required aria-label="Your Message"></textarea>
             </div>
 
-            <button type="submit" class="btn btn-pill btn-lime btn-form-submit" id="form-submit-btn">
-              SEND MESSAGE <span class="arrow">↗</span>
+            <button type="submit" class="btn btn-pill btn-lime btn-form-submit btn-send-full" id="form-submit-btn">
+              Send
             </button>
-
-            <p class="form-footnote">I'll get back to you within 24 hours.</p>
 
             <div id="form-response-msg" class="form-response-box" aria-live="polite"></div>
           </form>

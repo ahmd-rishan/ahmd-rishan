@@ -195,13 +195,14 @@ document.addEventListener('DOMContentLoaded', () => {
   if (contactForm && responseBox && submitBtn) {
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      
-      const name = document.getElementById('form-name')?.value.trim();
-      const email = document.getElementById('form-email')?.value.trim();
-      const subject = document.getElementById('form-subject')?.value.trim();
+
+      const name    = document.getElementById('form-name')?.value.trim();
+      const email   = document.getElementById('form-email')?.value.trim();
+      const phone   = document.getElementById('form-phone')?.value.trim();
+      const service = document.getElementById('form-service')?.value;
       const message = document.getElementById('form-message')?.value.trim();
 
-      if (!name || !email || !subject || !message) {
+      if (!name || !email || !phone || !service || !message) {
         responseBox.className = 'form-response-box error';
         responseBox.textContent = 'Please fill out all required fields.';
         responseBox.style.display = 'block';
@@ -211,23 +212,25 @@ document.addEventListener('DOMContentLoaded', () => {
       // Indicate loading state
       const originalBtnText = submitBtn.innerHTML;
       submitBtn.disabled = true;
-      submitBtn.innerHTML = 'CONNECTING TO WHATSAPP...';
+      submitBtn.innerHTML = 'Connecting to WhatsApp...';
 
       // Format WhatsApp Message
       const whatsappNumber = '919400810886';
-      const whatsappText = `*New Website Inquiry*\n\n` +
+      const whatsappText =
+        `*New Website Inquiry*\n\n` +
         `*Name:* ${name}\n` +
         `*Email:* ${email}\n` +
-        `*Subject:* ${subject}\n\n` +
+        `*Phone:* ${phone}\n` +
+        `*Service:* ${service}\n\n` +
         `*Message:* ${message}`;
 
       const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(whatsappText)}`;
 
       setTimeout(() => {
         responseBox.className = 'form-response-box success';
-        responseBox.innerHTML = '<strong>REDIRECTING TO WHATSAPP...</strong><br>Opening WhatsApp to send your inquiry directly to Ahammed Rishan.';
+        responseBox.innerHTML = '<strong>Redirecting to WhatsApp...</strong><br>Opening WhatsApp to send your inquiry directly to Ahammed Rishan.';
         responseBox.style.display = 'block';
-        
+
         // Open WhatsApp in a new tab / app window
         window.open(whatsappUrl, '_blank');
 
@@ -237,6 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 500);
     });
   }
+
 
   // 8. Work Page Category Filter Tabs (Zero-Glitch Height-Locked Transitions)
   const filterBtns = document.querySelectorAll('.work-filter-btn');
