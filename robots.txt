@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /node_modules/
+Disallow: /dist/
+Disallow: /.git/
+
+Sitemap: https://ahammedrishan.com/sitemap.xml
