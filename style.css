@@ -927,7 +927,7 @@ button {
 
 .results-stats {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
 }
 
@@ -1999,7 +1999,8 @@ button {
     grid-template-columns: 1fr;
   }
   .results-stats {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
   }
   .service-row {
     grid-template-columns: 35px 1fr 30px;
