@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       quote: '"OUR REACH AND ENGAGEMENT IMPROVED A LOT WITHIN A SHORT TIME."',
       body: '"We tried handling marketing on our own, but things changed after his help. Our reach and engagement improved a lot within a short time. Highly recommended!"',
-      name: 'RIFFANA SHERI',
+      name: 'RINFANA SHERI',
       role: 'DIGITAL MARKETER',
       avatar: './assets/client_avatar.svg'
     }
