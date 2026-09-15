@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       try {
         localStorage.setItem(THEME_KEY, newTheme);
-      } catch (e) {}
+      } catch (e) { }
 
       setTimeout(() => {
         document.documentElement.classList.remove('theme-transition');
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-  // 4. Testimonials Slider Switching (Auto-play 4s, Infinite loop, Hover-pause)
+  // 4. Testimonials Slider Switching
   const testimonials = [
     {
       quote: '"WHAT IMPRESSED US MOST WAS HIS FOCUS ON REAL RESULTS."',
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
       avatar: './assets/client_avatar.svg'
     },
     {
-      quote: '"BEST DIGITAL MARKETER IN MALAPPURAM — 100% RECOMMENDED."',
+      quote: '"BEST DIGITAL MARKETER IN MALAPPURAM - 100% RECOMMENDED."',
       body: '"If you are searching for Best Digital Marketer in Malappuram who knows digital marketing and is easy to work, he is the right person. 100% recommended."',
       name: 'JAMSHAD',
       role: 'VIDEO EDITOR',
@@ -131,8 +131,6 @@ document.addEventListener('DOMContentLoaded', () => {
   ];
 
   let currentTestimonialIndex = 0;
-  let testimonialAutoPlayTimer = null;
-  const testimonialsSection = document.getElementById('testimonials');
   const quoteHeadline = document.querySelector('.quote-headline');
   const quoteBody = document.querySelector('.quote-body');
   const clientName = document.querySelector('.client-name');
@@ -140,77 +138,25 @@ document.addEventListener('DOMContentLoaded', () => {
   const prevTestBtn = document.getElementById('prev-test-btn');
   const nextTestBtn = document.getElementById('next-test-btn');
 
-  let isAnimatingTestimonial = false;
-
   const updateTestimonial = (index) => {
-    if (!quoteHeadline || !quoteBody || isAnimatingTestimonial) return;
-    isAnimatingTestimonial = true;
-
-    const testimonialCard = document.querySelector('.testimonial-card');
-
-    quoteHeadline.classList.add('testimonial-animating');
-    if (testimonialCard) testimonialCard.classList.add('testimonial-animating');
-
-    setTimeout(() => {
-      const test = testimonials[index];
-      quoteHeadline.textContent = test.quote;
-      quoteBody.textContent = test.body;
-      if (clientName) clientName.textContent = test.name;
-      if (clientRole) clientRole.textContent = test.role;
-
-      quoteHeadline.classList.remove('testimonial-animating');
-      if (testimonialCard) testimonialCard.classList.remove('testimonial-animating');
-
-      setTimeout(() => {
-        isAnimatingTestimonial = false;
-      }, 280);
-    }, 250);
+    if (!quoteHeadline || !quoteBody) return;
+    const test = testimonials[index];
+    quoteHeadline.textContent = test.quote;
+    quoteBody.textContent = test.body;
+    if (clientName) clientName.textContent = test.name;
+    if (clientRole) clientRole.textContent = test.role;
   };
 
-  const nextTestimonial = () => {
-    currentTestimonialIndex = (currentTestimonialIndex + 1) % testimonials.length;
-    updateTestimonial(currentTestimonialIndex);
-  };
+  if (prevTestBtn && nextTestBtn) {
+    prevTestBtn.addEventListener('click', () => {
+      currentTestimonialIndex = (currentTestimonialIndex - 1 + testimonials.length) % testimonials.length;
+      updateTestimonial(currentTestimonialIndex);
+    });
 
-  const prevTestimonial = () => {
-    currentTestimonialIndex = (currentTestimonialIndex - 1 + testimonials.length) % testimonials.length;
-    updateTestimonial(currentTestimonialIndex);
-  };
-
-  const startTestimonialAutoPlay = () => {
-    stopTestimonialAutoPlay();
-    testimonialAutoPlayTimer = setInterval(nextTestimonial, 4000);
-  };
-
-  const stopTestimonialAutoPlay = () => {
-    if (testimonialAutoPlayTimer) {
-      clearInterval(testimonialAutoPlayTimer);
-      testimonialAutoPlayTimer = null;
-    }
-  };
-
-  if (quoteHeadline && quoteBody) {
-    // Start initial 4s auto-play
-    startTestimonialAutoPlay();
-
-    // Pause on hover, resume on mouse leave
-    if (testimonialsSection) {
-      testimonialsSection.addEventListener('mouseenter', stopTestimonialAutoPlay);
-      testimonialsSection.addEventListener('mouseleave', startTestimonialAutoPlay);
-    }
-
-    // Manual controls restart auto-play timer
-    if (prevTestBtn && nextTestBtn) {
-      prevTestBtn.addEventListener('click', () => {
-        prevTestimonial();
-        startTestimonialAutoPlay();
-      });
-
-      nextTestBtn.addEventListener('click', () => {
-        nextTestimonial();
-        startTestimonialAutoPlay();
-      });
-    }
+    nextTestBtn.addEventListener('click', () => {
+      currentTestimonialIndex = (currentTestimonialIndex + 1) % testimonials.length;
+      updateTestimonial(currentTestimonialIndex);
+    });
   }
 
   // 5. Work Section Controls (Filter / Focus Animation)
@@ -233,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
     trigger.addEventListener('click', () => {
       const item = trigger.closest('.faq-item');
       const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
-      
+
       // Close other open FAQ items for accordion behavior
       document.querySelectorAll('.faq-item').forEach(otherItem => {
         if (otherItem !== item) {
@@ -264,9 +210,9 @@ document.addEventListener('DOMContentLoaded', () => {
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      const name    = document.getElementById('form-name')?.value.trim();
-      const email   = document.getElementById('form-email')?.value.trim();
-      const phone   = document.getElementById('form-phone')?.value.trim();
+      const name = document.getElementById('form-name')?.value.trim();
+      const email = document.getElementById('form-email')?.value.trim();
+      const phone = document.getElementById('form-phone')?.value.trim();
       const service = document.getElementById('form-service')?.value;
       const message = document.getElementById('form-message')?.value.trim();
 
@@ -351,10 +297,10 @@ document.addEventListener('DOMContentLoaded', () => {
               card.classList.remove('hidden');
               card.style.opacity = '0';
               card.style.transform = 'translateY(10px) scale(0.98)';
-              
+
               // Force browser style recalculation to guarantee smooth CSS transition
               void card.offsetWidth;
-              
+
               card.style.transition = 'opacity 0.3s ease ' + (visibleIndex * 0.04) + 's, transform 0.3s ease ' + (visibleIndex * 0.04) + 's';
               card.style.opacity = '1';
               card.style.transform = 'translateY(0) scale(1)';
@@ -515,7 +461,7 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = targetUrl.href;
           }, 180);
         }
-      } catch (err) {}
+      } catch (err) { }
     });
   };
 
