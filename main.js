@@ -537,12 +537,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let height = window.innerHeight;
     let clock = 0;
 
-    const PARTICLE_COUNT = Math.min(130, Math.max(60, Math.floor((width * height) / 12000)));
-    const MAGNET_RADIUS = 150;
-    const RING_RADIUS = 65;
+    const PARTICLE_COUNT = Math.min(150, Math.max(70, Math.floor((width * height) / 10000)));
+    const MAGNET_RADIUS = 180;
+    const RING_RADIUS = 75;
     const WAVE_SPEED = 0.4;
     const WAVE_AMPLITUDE = 1.0;
-    const LERP_SPEED = 0.05;
+    const LERP_SPEED = 0.06;
     const FIELD_STRENGTH = 10;
 
     let mouse = { x: width / 2, y: height / 2 };
@@ -566,8 +566,8 @@ document.addEventListener('DOMContentLoaded', () => {
           cx: x,
           cy: y,
           randomRadiusOffset: (Math.random() - 0.5) * 2,
-          size: 1.5 + Math.random() * 1.5,
-          baseAlpha: 0.16 + Math.random() * 0.12,
+          size: 2.0 + Math.random() * 2.0,
+          baseAlpha: 0.20 + Math.random() * 0.12,
           pulseSpeed: 1.5 + Math.random() * 1.5
         });
       }
@@ -620,20 +620,20 @@ document.addEventListener('DOMContentLoaded', () => {
         targetY = height / 2 + Math.cos(time * 0.5 * 2) * (height * 0.2);
       }
 
-      const smoothFactor = 0.05;
+      const smoothFactor = 0.06;
       virtualMouse.x += (targetX - virtualMouse.x) * smoothFactor;
       virtualMouse.y += (targetY - virtualMouse.y) * smoothFactor;
 
       const vX = virtualMouse.x;
       const vY = virtualMouse.y;
-      const globalRotation = clock * 0.002;
+      const globalRotation = clock * 0.0025;
 
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
         p.t += p.speed / 2;
 
-        const driftX = p.mx + Math.sin(p.t * 0.3 + p.xFactor) * 15;
-        const driftY = p.my + Math.cos(p.t * 0.3 + p.yFactor) * 15;
+        const driftX = p.mx + Math.sin(p.t * 0.3 + p.xFactor) * 20;
+        const driftY = p.my + Math.cos(p.t * 0.3 + p.yFactor) * 20;
 
         const dx = driftX - vX;
         const dy = driftY - vY;
@@ -644,8 +644,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (dist < MAGNET_RADIUS) {
           const angle = Math.atan2(dy, dx) + globalRotation;
-          const wave = Math.sin(p.t * WAVE_SPEED + angle) * (0.5 * WAVE_AMPLITUDE * 10);
-          const deviation = p.randomRadiusOffset * (5 / (FIELD_STRENGTH + 0.1));
+          const wave = Math.sin(p.t * WAVE_SPEED + angle) * (0.5 * WAVE_AMPLITUDE * 12);
+          const deviation = p.randomRadiusOffset * (6 / (FIELD_STRENGTH + 0.1));
           const currentRingRadius = RING_RADIUS + wave + deviation;
 
           destX = vX + currentRingRadius * Math.cos(angle);
@@ -657,12 +657,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const distToMouse = Math.sqrt(Math.pow(p.cx - vX, 2) + Math.pow(p.cy - vY, 2));
         const distFromRing = Math.abs(distToMouse - RING_RADIUS);
-        let scaleFactor = 1 - distFromRing / 120;
-        scaleFactor = Math.max(0.6, Math.min(1.2, scaleFactor));
+        let scaleFactor = 1 - distFromRing / 130;
+        scaleFactor = Math.max(0.7, Math.min(1.3, scaleFactor));
 
-        const pulse = Math.sin(p.t * p.pulseSpeed) * 0.04;
-        const currentAlpha = Math.min(0.30, Math.max(0.15, p.baseAlpha + pulse));
+        const pulse = Math.sin(p.t * p.pulseSpeed) * 0.05;
+        const currentAlpha = Math.min(0.32, Math.max(0.18, p.baseAlpha + pulse));
         const currentSize = p.size * scaleFactor;
+
+        ctx.shadowBlur = 6;
+        ctx.shadowColor = `rgba(255, 255, 255, ${ (currentAlpha * 0.6).toFixed(3) })`;
 
         ctx.beginPath();
         ctx.arc(p.cx, p.cy, currentSize, 0, Math.PI * 2);

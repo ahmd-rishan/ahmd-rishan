@@ -3825,8 +3825,16 @@ main.page-exiting {
 }
 
 /* ==========================================================================
-   ANTIGRAVITY MOUSE TRACKING PARTICLE EFFECT (DARK MODE ONLY)
+   DARK THEME OVERRIDES & ANTIGRAVITY PARTICLE EFFECT
    ========================================================================== */
+html[data-theme="dark"] {
+  --bg-light: #0E0E0E;
+  --card-light: #17181A;
+  --text-dark-primary: #FFFFFF;
+  --text-dark-secondary: #9095A0;
+  --border-light: rgba(255, 255, 255, 0.12);
+}
+
 #particle-canvas {
   position: fixed;
   top: 0;
@@ -3834,13 +3842,15 @@ main.page-exiting {
   width: 100vw;
   height: 100vh;
   pointer-events: none;
-  z-index: 0;
+  z-index: 10;
   opacity: 0;
   transition: opacity 0.5s ease;
 }
 
+html[data-theme="dark"] #particle-canvas,
 [data-theme="dark"] #particle-canvas {
   opacity: 1;
 }
+
 
 
