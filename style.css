@@ -1680,10 +1680,10 @@ button {
 .timeline {
   display: flex;
   flex-direction: column;
-  gap: 2.75rem;
+  gap: 3.25rem;
   position: relative;
-  padding-left: 1.5rem;
-  border-left: 1px solid var(--border-light);
+  padding-left: 2rem;
+  border-left: 1px solid rgba(0, 0, 0, 0.12);
 }
 
 .timeline-item {
@@ -1692,89 +1692,52 @@ button {
 
 .timeline-dot {
   position: absolute;
-  left: -1.85rem;
+  left: -2.32rem;
   top: 6px;
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background-color: var(--bg-dark);
-  border: 2px solid var(--accent-lime);
-}
-
-.timeline-header {
-  margin-bottom: 0.85rem;
+  background-color: var(--accent-lime);
 }
 
 .timeline-company {
   font-family: var(--font-display);
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   font-weight: 700;
   color: var(--text-dark-primary);
   line-height: 1.2;
+  margin-bottom: 0.15rem;
 }
 
 .timeline-location {
   font-family: var(--font-heading);
-  font-size: 0.78rem;
+  font-size: 0.88rem;
   font-weight: 600;
   color: var(--text-dark-secondary);
-  display: block;
-  margin-top: 0.25rem;
-  letter-spacing: 0.3px;
+  margin-bottom: 1.1rem;
 }
 
-.timeline-roles {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-
-.timeline-role-block {
-  position: relative;
-  padding-left: 0.85rem;
-  border-left: 2px solid var(--accent-lime);
-}
-
-.timeline-role-top {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.4rem 0.75rem;
-  margin-bottom: 0.2rem;
-}
-
-.timeline-role-title {
+.timeline-role {
   font-family: var(--font-display);
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: var(--text-dark-primary);
-  margin: 0;
-}
-
-.timeline-type-badge {
-  font-family: var(--font-heading);
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  padding: 0.15rem 0.55rem;
-  background-color: var(--bg-dark);
-  color: var(--accent-lime);
-  border-radius: 4px;
+  margin-bottom: 0.2rem;
 }
 
 .timeline-date {
   font-family: var(--font-heading);
-  font-size: 0.78rem;
+  font-size: 0.85rem;
   font-weight: 600;
   color: var(--text-dark-secondary);
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.4rem;
 }
 
 .timeline-desc {
-  font-size: 0.88rem;
+  font-family: var(--font-heading);
+  font-size: 0.92rem;
   color: var(--text-dark-secondary);
-  line-height: 1.55;
+  line-height: 1.5;
   margin: 0;
 }
 
