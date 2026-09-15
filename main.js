@@ -520,7 +520,198 @@ document.addEventListener('DOMContentLoaded', () => {
 
   initPageTransitions();
 
+  // 11. Antigravity Mouse Tracking Particle Effect (Dark Mode Only)
+  const initAntigravityParticles = () => {
+    let canvas = document.getElementById('particle-canvas');
+    if (!canvas) {
+      canvas = document.createElement('canvas');
+      canvas.id = 'particle-canvas';
+      document.body.prepend(canvas);
+    }
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let animId = null;
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    let clock = 0;
+
+    const PARTICLE_COUNT = Math.min(130, Math.max(60, Math.floor((width * height) / 12000)));
+    const MAGNET_RADIUS = 150;
+    const RING_RADIUS = 65;
+    const WAVE_SPEED = 0.4;
+    const WAVE_AMPLITUDE = 1.0;
+    const LERP_SPEED = 0.05;
+    const FIELD_STRENGTH = 10;
+
+    let mouse = { x: width / 2, y: height / 2 };
+    let virtualMouse = { x: width / 2, y: height / 2 };
+    let lastMouseMoveTime = 0;
+
+    const particles = [];
+
+    const createParticles = () => {
+      particles.length = 0;
+      for (let i = 0; i < PARTICLE_COUNT; i++) {
+        const x = Math.random() * width;
+        const y = Math.random() * height;
+        particles.push({
+          t: Math.random() * 100,
+          speed: 0.01 + Math.random() * 0.015,
+          xFactor: -50 + Math.random() * 100,
+          yFactor: -50 + Math.random() * 100,
+          mx: x,
+          my: y,
+          cx: x,
+          cy: y,
+          randomRadiusOffset: (Math.random() - 0.5) * 2,
+          size: 1.5 + Math.random() * 1.5,
+          baseAlpha: 0.16 + Math.random() * 0.12,
+          pulseSpeed: 1.5 + Math.random() * 1.5
+        });
+      }
+    };
+
+    const handleResize = () => {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      canvas.style.width = width + 'px';
+      canvas.style.height = height + 'px';
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.scale(dpr, dpr);
+    };
+
+    const handleMouseMove = (e) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+      lastMouseMoveTime = Date.now();
+    };
+
+    const handleTouchMove = (e) => {
+      if (e.touches && e.touches[0]) {
+        mouse.x = e.touches[0].clientX;
+        mouse.y = e.touches[0].clientY;
+        lastMouseMoveTime = Date.now();
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    window.addEventListener('touchmove', handleTouchMove, { passive: true });
+
+    handleResize();
+    createParticles();
+
+    const render = () => {
+      clock += 1;
+
+      ctx.clearRect(0, 0, width, height);
+
+      let targetX = mouse.x;
+      let targetY = mouse.y;
+
+      if (Date.now() - lastMouseMoveTime > 2000) {
+        const time = clock * 0.012;
+        targetX = width / 2 + Math.sin(time * 0.5) * (width * 0.25);
+        targetY = height / 2 + Math.cos(time * 0.5 * 2) * (height * 0.2);
+      }
+
+      const smoothFactor = 0.05;
+      virtualMouse.x += (targetX - virtualMouse.x) * smoothFactor;
+      virtualMouse.y += (targetY - virtualMouse.y) * smoothFactor;
+
+      const vX = virtualMouse.x;
+      const vY = virtualMouse.y;
+      const globalRotation = clock * 0.002;
+
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        p.t += p.speed / 2;
+
+        const driftX = p.mx + Math.sin(p.t * 0.3 + p.xFactor) * 15;
+        const driftY = p.my + Math.cos(p.t * 0.3 + p.yFactor) * 15;
+
+        const dx = driftX - vX;
+        const dy = driftY - vY;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        let destX = driftX;
+        let destY = driftY;
+
+        if (dist < MAGNET_RADIUS) {
+          const angle = Math.atan2(dy, dx) + globalRotation;
+          const wave = Math.sin(p.t * WAVE_SPEED + angle) * (0.5 * WAVE_AMPLITUDE * 10);
+          const deviation = p.randomRadiusOffset * (5 / (FIELD_STRENGTH + 0.1));
+          const currentRingRadius = RING_RADIUS + wave + deviation;
+
+          destX = vX + currentRingRadius * Math.cos(angle);
+          destY = vY + currentRingRadius * Math.sin(angle);
+        }
+
+        p.cx += (destX - p.cx) * LERP_SPEED;
+        p.cy += (destY - p.cy) * LERP_SPEED;
+
+        const distToMouse = Math.sqrt(Math.pow(p.cx - vX, 2) + Math.pow(p.cy - vY, 2));
+        const distFromRing = Math.abs(distToMouse - RING_RADIUS);
+        let scaleFactor = 1 - distFromRing / 120;
+        scaleFactor = Math.max(0.6, Math.min(1.2, scaleFactor));
+
+        const pulse = Math.sin(p.t * p.pulseSpeed) * 0.04;
+        const currentAlpha = Math.min(0.30, Math.max(0.15, p.baseAlpha + pulse));
+        const currentSize = p.size * scaleFactor;
+
+        ctx.beginPath();
+        ctx.arc(p.cx, p.cy, currentSize, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${currentAlpha.toFixed(3)})`;
+        ctx.fill();
+      }
+
+      animId = requestAnimationFrame(render);
+    };
+
+    const isDarkMode = () => document.documentElement.getAttribute('data-theme') === 'dark';
+    const prefersReducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const updateState = () => {
+      const active = isDarkMode() && !prefersReducedMotion();
+      if (active) {
+        if (!animId) {
+          animId = requestAnimationFrame(render);
+        }
+      } else {
+        if (animId) {
+          cancelAnimationFrame(animId);
+          animId = null;
+        }
+        ctx.clearRect(0, 0, width, height);
+      }
+    };
+
+    const observer = new MutationObserver((mutations) => {
+      for (const m of mutations) {
+        if (m.attributeName === 'data-theme') {
+          updateState();
+        }
+      }
+    });
+    observer.observe(document.documentElement, { attributes: true });
+
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (motionQuery.addEventListener) {
+      motionQuery.addEventListener('change', updateState);
+    }
+
+    updateState();
+  };
+
+  initAntigravityParticles();
+
   console.log('AHAMMED RISHAN® Portfolio scripts initialized successfully.');
 });
+
 
 
