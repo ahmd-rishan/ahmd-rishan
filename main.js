@@ -95,23 +95,37 @@ document.addEventListener('DOMContentLoaded', () => {
   const testimonials = [
     {
       quote: '"WHAT IMPRESSED US MOST WAS HIS FOCUS ON REAL RESULTS."',
-      body: '"Working with Ahammed Rishan was a great experience. Strategic approach, creativity and dedication helped us achieve real growth. Highly recommended!"',
-      name: 'GIASUDHEEN TH',
-      role: 'FOUNDER, CHRD KERALA',
+      body: '"What impressed us most was his focus on real results. His strategies helped us reach more people, increase engagement, and generate genuine conversions."',
+      name: 'KHAMARUDHEEN',
+      role: 'CHRD KERALA',
       avatar: './assets/client_avatar.svg'
     },
     {
-      quote: '"HIS DIGITAL MARKETING & DEV WORK TURNED OUR BRAND AROUND."',
-      body: '"Ahammed transformed our online visibility completely. From website architecture to Google ad campaigns, the execution was flawless."',
-      name: 'CASABIA TEAM',
-      role: 'DIRECTOR, CASABIA DESIGNS',
+      quote: '"WORKING WITH HIM HAS BEEN A GREAT DECISION FOR OUR BUSINESS."',
+      body: '"Working with him has been a great decision for our business. He knows the market well and created strategies that actually brought us more enquiries. We have seen improvement in our online presence."',
+      name: 'RASEENA',
+      role: 'CASABIA DESIGNS',
       avatar: './assets/client_avatar.svg'
     },
     {
-      quote: '"EXCEPTIONAL STRATEGY AND MEASURABLE ORGANIC GROWTH."',
-      body: '"If you want someone who understands digital systems and brand positioning, Ahammed Rishan is the real deal."',
-      name: 'ELATOT BRANDING',
-      role: 'FOUNDER, ELATOT FOODS',
+      quote: '"WE\'RE EXTREMELY HAPPY WITH OUR NEW WEBSITE!"',
+      body: '"We\'re extremely happy with our new website! The design is modern, user friendly, and perfectly reflects the Elatot Foods brand. The entire process was smooth, professional, and delivered beyond our expectations. Highly recommended!"',
+      name: 'IRFAN',
+      role: 'ELATOT FOODS',
+      avatar: './assets/client_avatar.svg'
+    },
+    {
+      quote: '"BEST DIGITAL MARKETER IN MALAPPURAM — 100% RECOMMENDED."',
+      body: '"If you are searching for Best Digital Marketer in Malappuram who knows digital marketing and is easy to work, he is the right person. 100% recommended."',
+      name: 'JAMSHAD',
+      role: 'VIDEO EDITOR',
+      avatar: './assets/client_avatar.svg'
+    },
+    {
+      quote: '"OUR REACH AND ENGAGEMENT IMPROVED A LOT WITHIN A SHORT TIME."',
+      body: '"We tried handling marketing on our own, but things changed after his help. Our reach and engagement improved a lot within a short time. Highly recommended!"',
+      name: 'RIFFANA SHERI',
+      role: 'DIGITAL MARKETER',
       avatar: './assets/client_avatar.svg'
     }
   ];
