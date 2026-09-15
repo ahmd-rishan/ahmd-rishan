@@ -1677,6 +1677,13 @@ button {
   align-items: flex-start;
 }
 
+.experience-left {
+  position: sticky;
+  top: calc(var(--nav-height) + 2.5rem);
+  align-self: flex-start;
+  z-index: 10;
+}
+
 .timeline {
   display: flex;
   flex-direction: column;
@@ -1889,6 +1896,11 @@ button {
   }
   .experience-grid {
     grid-template-columns: 1fr;
+  }
+  .experience-left {
+    position: static;
+    top: auto;
+    margin-bottom: 2rem;
   }
   .skills-grid {
     grid-template-columns: 1fr;
