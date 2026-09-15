@@ -1434,11 +1434,11 @@ button {
 .cta-annotation {
   position: absolute;
   right: 0;
-  top: 1.5rem;
+  top: -2.8rem;
   font-family: var(--font-script);
   font-size: clamp(1.8rem, 2.5vw, 2.4rem);
   color: var(--accent-lime);
-  transform: rotate(-6deg);
+  transform: rotate(-5deg);
   white-space: nowrap;
 }
 
@@ -2908,7 +2908,7 @@ a.info-val:hover {
 .contact-final-annotation {
   position: absolute;
   right: 0;
-  top: 0.5rem;
+  top: -2.8rem;
   font-family: var(--font-script);
   font-size: clamp(2rem, 2.8vw, 2.6rem);
   color: var(--accent-lime);
