@@ -1680,7 +1680,7 @@ button {
 .timeline {
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: 2.75rem;
   position: relative;
   padding-left: 1.5rem;
   border-left: 1px solid var(--border-light);
@@ -1688,20 +1688,6 @@ button {
 
 .timeline-item {
   position: relative;
-}
-
-.timeline-meta {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 0.5rem;
-}
-
-.timeline-date {
-  font-family: var(--font-heading);
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--text-dark-secondary);
 }
 
 .timeline-dot {
@@ -1715,17 +1701,81 @@ button {
   border: 2px solid var(--accent-lime);
 }
 
-.timeline-role {
+.timeline-header {
+  margin-bottom: 0.85rem;
+}
+
+.timeline-company {
   font-family: var(--font-display);
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   font-weight: 700;
+  color: var(--text-dark-primary);
+  line-height: 1.2;
+}
+
+.timeline-location {
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-dark-secondary);
+  display: block;
+  margin-top: 0.25rem;
+  letter-spacing: 0.3px;
+}
+
+.timeline-roles {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.timeline-role-block {
+  position: relative;
+  padding-left: 0.85rem;
+  border-left: 2px solid var(--accent-lime);
+}
+
+.timeline-role-top {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.75rem;
+  margin-bottom: 0.2rem;
+}
+
+.timeline-role-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-dark-primary);
+  margin: 0;
+}
+
+.timeline-type-badge {
+  font-family: var(--font-heading);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  padding: 0.15rem 0.55rem;
+  background-color: var(--bg-dark);
+  color: var(--accent-lime);
+  border-radius: 4px;
+}
+
+.timeline-date {
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-dark-secondary);
   margin-bottom: 0.35rem;
 }
 
 .timeline-desc {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   color: var(--text-dark-secondary);
-  line-height: 1.5;
+  line-height: 1.55;
+  margin: 0;
 }
 
 /* 05 / SKILLS & TOOLS SECTION */
