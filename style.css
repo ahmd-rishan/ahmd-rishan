@@ -1298,6 +1298,17 @@ button {
   align-items: flex-start;
 }
 
+.quote-headline,
+.testimonial-card {
+  transition: opacity 0.28s cubic-bezier(0.25, 1, 0.5, 1), transform 0.28s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: opacity, transform;
+}
+
+.testimonial-animating {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
 .quote-headline {
   font-family: var(--font-display);
   font-size: clamp(1.6rem, 2.8vw, 2.8rem);

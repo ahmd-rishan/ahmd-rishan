@@ -140,13 +140,31 @@ document.addEventListener('DOMContentLoaded', () => {
   const prevTestBtn = document.getElementById('prev-test-btn');
   const nextTestBtn = document.getElementById('next-test-btn');
 
+  let isAnimatingTestimonial = false;
+
   const updateTestimonial = (index) => {
-    if (!quoteHeadline || !quoteBody) return;
-    const test = testimonials[index];
-    quoteHeadline.textContent = test.quote;
-    quoteBody.textContent = test.body;
-    if (clientName) clientName.textContent = test.name;
-    if (clientRole) clientRole.textContent = test.role;
+    if (!quoteHeadline || !quoteBody || isAnimatingTestimonial) return;
+    isAnimatingTestimonial = true;
+
+    const testimonialCard = document.querySelector('.testimonial-card');
+
+    quoteHeadline.classList.add('testimonial-animating');
+    if (testimonialCard) testimonialCard.classList.add('testimonial-animating');
+
+    setTimeout(() => {
+      const test = testimonials[index];
+      quoteHeadline.textContent = test.quote;
+      quoteBody.textContent = test.body;
+      if (clientName) clientName.textContent = test.name;
+      if (clientRole) clientRole.textContent = test.role;
+
+      quoteHeadline.classList.remove('testimonial-animating');
+      if (testimonialCard) testimonialCard.classList.remove('testimonial-animating');
+
+      setTimeout(() => {
+        isAnimatingTestimonial = false;
+      }, 280);
+    }, 250);
   };
 
   const nextTestimonial = () => {
