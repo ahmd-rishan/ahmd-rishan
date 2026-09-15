@@ -365,8 +365,8 @@ button {
 .hero-section {
   position: relative;
   padding-top: calc(var(--nav-height) + 2.5rem);
-  padding-bottom: clamp(3.5rem, 6vw, 5rem);
-  min-height: 90vh;
+  padding-bottom: clamp(2.5rem, 4.5vw, 3.5rem);
+  min-height: 85vh;
   display: flex;
   align-items: center;
 }
@@ -729,7 +729,7 @@ button {
    3. INTRODUCTION SECTION (DARK)
    ========================================================================== */
 .intro-section {
-  padding: clamp(4.5rem, 7vw, 7rem) 0;
+  padding: clamp(2.75rem, 4.5vw, 4.25rem) 0;
 }
 
 .intro-grid {
@@ -796,7 +796,7 @@ button {
    4. SELECTED WORK SECTION
    ========================================================================== */
 .work-section {
-  padding: clamp(4.5rem, 7vw, 7rem) 0;
+  padding: clamp(2.75rem, 4.5vw, 4.25rem) 0;
 }
 
 .section-header-flex {
@@ -805,7 +805,7 @@ button {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 1.5rem;
-  margin-bottom: 3.5rem;
+  margin-bottom: 2.25rem;
 }
 
 .header-right-controls {
@@ -837,7 +837,7 @@ button {
 .work-view-more-container {
   display: flex;
   justify-content: center;
-  margin-top: 3.5rem;
+  margin-top: 2.25rem;
 }
 
 .work-card {
@@ -905,7 +905,7 @@ button {
    5. RESULTS SECTION (DARK)
    ========================================================================== */
 .results-section {
-  padding: 5.5rem 0;
+  padding: 3.25rem 0;
   border-top: 1px solid var(--border-dark);
   border-bottom: 1px solid var(--border-dark);
 }
@@ -970,7 +970,7 @@ button {
    6. SERVICES SECTION
    ========================================================================== */
 .services-section {
-  padding: clamp(4.5rem, 7vw, 7rem) 0;
+  padding: clamp(2.75rem, 4.5vw, 4.25rem) 0;
 }
 
 .services-grid {
@@ -987,7 +987,7 @@ button {
 }
 
 .services-badge-card {
-  margin-top: 3.5rem;
+  margin-top: 2rem;
   display: flex;
   align-items: center;
   gap: 1.25rem;
@@ -1072,7 +1072,7 @@ button {
    7. MY APPROACH SECTION (DARK)
    ========================================================================== */
 .approach-section {
-  padding: clamp(4.5rem, 7vw, 7rem) 0;
+  padding: clamp(2.75rem, 4.5vw, 4.25rem) 0;
 }
 
 .approach-header {
@@ -1081,7 +1081,7 @@ button {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 2.5rem;
-  margin-bottom: 4.5rem;
+  margin-bottom: 2.5rem;
 }
 
 .approach-header-right {
@@ -1156,7 +1156,7 @@ button {
    8. ABOUT ME SECTION (HOMEPAGE)
    ========================================================================== */
 .about-section {
-  padding: clamp(4.5rem, 7vw, 7rem) 0;
+  padding: clamp(2.75rem, 4.5vw, 4.25rem) 0;
 }
 
 .about-grid {
@@ -1237,7 +1237,7 @@ button {
    9. CERTIFICATIONS SECTION (DARK)
    ========================================================================== */
 .certifications-section {
-  padding: 4rem 0;
+  padding: 2.5rem 0;
   border-top: 1px solid var(--border-dark);
   border-bottom: 1px solid var(--border-dark);
 }
@@ -1288,7 +1288,7 @@ button {
    10. TESTIMONIALS SECTION
    ========================================================================== */
 .testimonials-section {
-  padding: clamp(4.5rem, 7vw, 7rem) 0;
+  padding: clamp(2.75rem, 4.5vw, 4.25rem) 0;
 }
 
 .testimonials-grid {
@@ -1378,7 +1378,7 @@ button {
    12. FINAL CTA SECTION (DARK)
    ========================================================================== */
 .cta-section {
-  padding: clamp(6rem, 9vw, 8rem) 0 clamp(4.5rem, 7vw, 6rem) 0;
+  padding: clamp(3.5rem, 5vw, 5rem) 0 clamp(3rem, 4vw, 4rem) 0;
   position: relative;
 }
 
@@ -1570,7 +1570,7 @@ button {
 
 /* 02 / MY JOURNEY SECTION */
 .journey-section {
-  padding: clamp(4.5rem, 7vw, 7rem) 0;
+  padding: clamp(2.75rem, 4.5vw, 4.25rem) 0;
 }
 
 .journey-grid {
@@ -1626,7 +1626,7 @@ button {
 
 /* 03 / WHO I AM SECTION */
 .who-section {
-  padding: clamp(4.5rem, 7vw, 7rem) 0;
+  padding: clamp(2.75rem, 4.5vw, 4.25rem) 0;
 }
 
 .who-grid {
@@ -1678,7 +1678,7 @@ button {
 
 /* 04 / EXPERIENCE SECTION */
 .experience-section {
-  padding: clamp(4.5rem, 7vw, 7rem) 0;
+  padding: clamp(2.75rem, 4.5vw, 4.25rem) 0;
 }
 
 .experience-grid {
@@ -1761,7 +1761,7 @@ button {
 
 /* 05 / SKILLS & TOOLS SECTION */
 .skills-section {
-  padding: clamp(4.5rem, 7vw, 7rem) 0;
+  padding: clamp(2.75rem, 4.5vw, 4.25rem) 0;
 }
 
 .skills-grid {
@@ -1817,7 +1817,7 @@ button {
 
 /* 06 / MY VALUES SECTION */
 .values-section {
-  padding: clamp(4.5rem, 7vw, 7rem) 0;
+  padding: clamp(2.75rem, 4.5vw, 4.25rem) 0;
 }
 
 .values-grid {
@@ -2072,8 +2072,8 @@ button {
    SERVICES PAGE STYLES
    ========================================================================== */
 .services-hero-section {
-  padding-top: calc(var(--nav-height) + 3.5rem);
-  padding-bottom: 4.5rem;
+  padding-top: calc(var(--nav-height) + 2.5rem);
+  padding-bottom: 2.75rem;
   position: relative;
   overflow: hidden;
 }
@@ -2206,7 +2206,7 @@ button {
 
 /* SECTION 02 — WHAT I OFFER */
 .services-offer-section {
-  padding: 6rem 0;
+  padding: clamp(2.75rem, 4.5vw, 4.25rem) 0;
   border-top: 1px solid var(--border-light);
 }
 
@@ -2241,7 +2241,7 @@ button {
 
 /* SECTION 03 — MY PROCESS */
 .services-process-section {
-  padding: 6rem 0;
+  padding: clamp(2.75rem, 4.5vw, 4.25rem) 0;
 }
 
 .services-process-container {
@@ -2305,7 +2305,7 @@ button {
 
 /* SECTION 04 — WHY WORK WITH ME */
 .services-benefits-section {
-  padding: 6rem 0;
+  padding: clamp(2.75rem, 4.5vw, 4.25rem) 0;
 }
 
 .services-benefits-container {
@@ -2451,8 +2451,8 @@ button {
    CONTACT PAGE STYLES
    ========================================================================== */
 .contact-hero-section {
-  padding-top: calc(var(--nav-height) + 3.5rem);
-  padding-bottom: 4.5rem;
+  padding-top: calc(var(--nav-height) + 2.5rem);
+  padding-bottom: 2.75rem;
   position: relative;
   overflow: hidden;
 }
@@ -2571,7 +2571,7 @@ button {
 
 /* SECTION 02 — GET IN TOUCH */
 .contact-touch-section {
-  padding: 6rem 0;
+  padding: clamp(2.75rem, 4.5vw, 4.25rem) 0;
 }
 
 .contact-touch-container {
@@ -2738,7 +2738,7 @@ a.info-val:hover {
 
 /* SECTION 03 — QUICK INFO */
 .contact-info-section {
-  padding: clamp(3.5rem, 5vw, 4.5rem) 0;
+  padding: clamp(2.5rem, 4vw, 3.25rem) 0;
 }
 
 .contact-info-container {
@@ -2902,7 +2902,7 @@ a.info-val:hover {
 }
 
 .contact-final-section {
-  padding: clamp(4.5rem, 6vw, 6rem) 0;
+  padding: clamp(2.75rem, 4.5vw, 4.25rem) 0;
 }
 
 .contact-final-annotation {
@@ -3182,8 +3182,8 @@ html.theme-transition *::after {
    ========================================================================== */
 
 .work-hero-section {
-  padding-top: clamp(7rem, 12vh, 10rem);
-  padding-bottom: 3.5rem;
+  padding-top: clamp(6rem, 10vh, 8.5rem);
+  padding-bottom: 2.25rem;
 }
 
 .work-hero-header {
@@ -3249,7 +3249,7 @@ html.theme-transition *::after {
 /* Editorial Showcase List */
 .work-showcase-section {
   padding-top: 2rem;
-  padding-bottom: clamp(5rem, 8vw, 8rem);
+  padding-bottom: clamp(3rem, 5vw, 4.5rem);
 }
 
 .work-editorial-list {

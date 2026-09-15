@@ -713,8 +713,63 @@ document.addEventListener('DOMContentLoaded', () => {
 
   initAntigravityParticles();
 
+  // 12. Magnetic Hover Effect for Buttons & Interactive Elements
+  const initMagneticButtons = () => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const magneticElements = document.querySelectorAll(
+      '.btn, .circle-btn, .theme-toggle, .view-project-btn, .social-icon-link, .work-filter-btn, [data-magnetic]'
+    );
+
+    magneticElements.forEach(elem => {
+      let animationFrameId = null;
+      const innerElem = elem.querySelector('.arrow, span, svg, img');
+
+      elem.addEventListener('mousemove', (e) => {
+        const rect = elem.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+
+        const deltaX = (e.clientX - centerX) * 0.35;
+        const deltaY = (e.clientY - centerY) * 0.35;
+
+        if (animationFrameId) cancelAnimationFrame(animationFrameId);
+
+        animationFrameId = requestAnimationFrame(() => {
+          elem.style.transition = 'transform 0.1s cubic-bezier(0.25, 1, 0.5, 1)';
+          elem.style.transform = `translate(${deltaX.toFixed(2)}px, ${deltaY.toFixed(2)}px) scale(1.03)`;
+
+          if (innerElem) {
+            innerElem.style.transition = 'transform 0.1s cubic-bezier(0.25, 1, 0.5, 1)';
+            innerElem.style.transform = `translate(${(deltaX * 0.25).toFixed(2)}px, ${(deltaY * 0.25).toFixed(2)}px)`;
+          }
+        });
+      });
+
+      elem.addEventListener('mouseleave', () => {
+        if (animationFrameId) cancelAnimationFrame(animationFrameId);
+
+        elem.style.transition = 'transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.25)';
+        elem.style.transform = 'translate(0px, 0px) scale(1)';
+
+        if (innerElem) {
+          innerElem.style.transition = 'transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.25)';
+          innerElem.style.transform = 'translate(0px, 0px)';
+        }
+
+        setTimeout(() => {
+          elem.style.transition = '';
+          if (innerElem) innerElem.style.transition = '';
+        }, 500);
+      });
+    });
+  };
+
+  initMagneticButtons();
+
   console.log('AHAMMED RISHAN® Portfolio scripts initialized successfully.');
 });
+
 
 
 
