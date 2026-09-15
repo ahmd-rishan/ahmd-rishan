@@ -411,6 +411,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const liveUrl = btn.getAttribute('data-live-url') || '#';
 
         if (modalImg) {
+          modalImg.onerror = null;
+          modalImg.onerror = () => {
+            if (image.startsWith('./')) {
+              modalImg.src = image.replace('./', '/');
+            } else if (!image.startsWith('/')) {
+              modalImg.src = '/' + image;
+            }
+          };
           modalImg.src = image;
           modalImg.alt = title;
         }

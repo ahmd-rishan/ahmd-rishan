@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 130" fill="none">
+  <style>
+    .brand-text { font-family: 'Syne', 'Space Grotesk', sans-serif; font-weight: 800; font-size: 52px; fill: #FFFFFF; letter-spacing: -1.5px; }
+  </style>
+  <text x="0" y="52" class="brand-text">AHAMMED</text>
+  <text x="0" y="112" class="brand-text">RISHAN</text>
+</svg>

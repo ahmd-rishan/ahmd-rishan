@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <rect width="800" height="600" fill="#141517"/>
+  <!-- Slate platform background -->
+  <path d="M50 420 L750 420 L700 560 L100 560 Z" fill="#202225"/>
+  <!-- Elatot Pouch Mockup -->
+  <g transform="translate(260, 100)">
+    <path d="M40 20 L240 20 L260 380 L20 380 Z" fill="#D9C5A0"/>
+    <path d="M40 20 L240 20 L230 50 L50 50 Z" fill="#BAA37B"/>
+    <rect x="60" y="100" width="160" height="220" rx="8" fill="#1C1D1F"/>
+    <text x="140" y="145" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="20" fill="#D4FF00">ELATOT</text>
+    <text x="140" y="170" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="12" fill="#FFFFFF" letter-spacing="2">FOODS</text>
+    <circle cx="140" cy="220" r="30" fill="#2A2C30" stroke="#D4FF00" stroke-width="2"/>
+    <text x="140" y="225" text-anchor="middle" font-size="20" fill="#D4FF00">🌿</text>
+    <text x="140" y="280" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#A0A5AD">ORGANIC &amp; NATURAL</text>
+  </g>
+  <!-- Spice bowl left -->
+  <ellipse cx="200" cy="440" rx="70" ry="35" fill="#2A2C30"/>
+  <ellipse cx="200" cy="435" rx="60" ry="25" fill="#C86D3B"/>
+  <!-- Bowl right -->
+  <ellipse cx="580" cy="450" rx="80" ry="40" fill="#2A2C30"/>
+  <ellipse cx="580" cy="445" rx="70" ry="30" fill="#E5AA42"/>
+</svg>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250" width="400" height="250">
+  <rect width="400" height="250" fill="#141619"/>
+  <rect x="40" y="40" width="150" height="170" rx="6" fill="#24272D"/>
+  <rect x="210" y="40" width="150" height="170" rx="6" fill="#1A1C20" stroke="#D4FF00" stroke-width="2"/>
+  <text x="115" y="130" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="16" fill="#A0A5AD">WEBFLOW</text>
+  <text x="285" y="130" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="16" fill="#D4FF00">WORDPRESS</text>
+</svg>
