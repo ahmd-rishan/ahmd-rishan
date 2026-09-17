@@ -4,4 +4,4 @@ Disallow: /node_modules/
 Disallow: /dist/
 Disallow: /.git/
 
-Sitemap: https://ahammedrishan.com/sitemap.xml
+Sitemap: https://brandwithrishan.in/sitemap.xml
