@@ -747,13 +747,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   initConnectedParticleNetwork();
 
-  // 12. Magnetic Hover Effect for Buttons & Interactive Elements
+  // 12. Magnetic Hover Effect for Buttons & Interactive Elements (Subtle & Premium)
   const initMagneticButtons = () => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (window.matchMedia('(pointer: coarse)').matches) return;
 
     const magneticElements = document.querySelectorAll(
       '.btn, .circle-btn, .theme-toggle, .view-project-btn, .social-icon-link, .work-filter-btn, [data-magnetic]'
     );
+
+    const STRENGTH = 0.12;
+    const MAX_MOVE = 3.5; // 3.5px max displacement for subtle premium feel
 
     magneticElements.forEach(elem => {
       let animationFrameId = null;
@@ -764,18 +768,23 @@ document.addEventListener('DOMContentLoaded', () => {
         const centerX = rect.left + rect.width / 2;
         const centerY = rect.top + rect.height / 2;
 
-        const deltaX = (e.clientX - centerX) * 0.35;
-        const deltaY = (e.clientY - centerY) * 0.35;
+        const rawX = (e.clientX - centerX) * STRENGTH;
+        const rawY = (e.clientY - centerY) * STRENGTH;
+
+        const deltaX = Math.max(-MAX_MOVE, Math.min(MAX_MOVE, rawX));
+        const deltaY = Math.max(-MAX_MOVE, Math.min(MAX_MOVE, rawY));
 
         if (animationFrameId) cancelAnimationFrame(animationFrameId);
 
         animationFrameId = requestAnimationFrame(() => {
-          elem.style.transition = 'transform 0.1s cubic-bezier(0.25, 1, 0.5, 1)';
-          elem.style.transform = `translate(${deltaX.toFixed(2)}px, ${deltaY.toFixed(2)}px) scale(1.03)`;
+          elem.style.transition = 'transform 0.12s cubic-bezier(0.25, 1, 0.5, 1)';
+          elem.style.transform = `translate(${deltaX.toFixed(2)}px, ${deltaY.toFixed(2)}px) scale(1.02)`;
 
           if (innerElem) {
-            innerElem.style.transition = 'transform 0.1s cubic-bezier(0.25, 1, 0.5, 1)';
-            innerElem.style.transform = `translate(${(deltaX * 0.25).toFixed(2)}px, ${(deltaY * 0.25).toFixed(2)}px)`;
+            const innerX = deltaX * 0.25;
+            const innerY = deltaY * 0.25;
+            innerElem.style.transition = 'transform 0.12s cubic-bezier(0.25, 1, 0.5, 1)';
+            innerElem.style.transform = `translate(${innerX.toFixed(2)}px, ${innerY.toFixed(2)}px)`;
           }
         });
       });
@@ -783,18 +792,18 @@ document.addEventListener('DOMContentLoaded', () => {
       elem.addEventListener('mouseleave', () => {
         if (animationFrameId) cancelAnimationFrame(animationFrameId);
 
-        elem.style.transition = 'transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.25)';
+        elem.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.25)';
         elem.style.transform = 'translate(0px, 0px) scale(1)';
 
         if (innerElem) {
-          innerElem.style.transition = 'transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.25)';
+          innerElem.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.25)';
           innerElem.style.transform = 'translate(0px, 0px)';
         }
 
         setTimeout(() => {
           elem.style.transition = '';
           if (innerElem) innerElem.style.transition = '';
-        }, 500);
+        }, 400);
       });
     });
   };
