@@ -538,8 +538,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   initPageTransitions();
 
-  // 11. Antigravity Mouse Tracking Particle Effect (Dark Mode Only)
-  const initAntigravityParticles = () => {
+  // 11. Interactive Connected Particle Network (Dark Mode Constellation Effect)
+  const initConnectedParticleNetwork = () => {
     let canvas = document.getElementById('particle-canvas');
     if (!canvas) {
       canvas = document.createElement('canvas');
@@ -553,40 +553,31 @@ document.addEventListener('DOMContentLoaded', () => {
     let animId = null;
     let width = window.innerWidth;
     let height = window.innerHeight;
-    let clock = 0;
 
-    const PARTICLE_COUNT = Math.min(150, Math.max(70, Math.floor((width * height) / 10000)));
-    const MAGNET_RADIUS = 180;
-    const RING_RADIUS = 75;
-    const WAVE_SPEED = 0.4;
-    const WAVE_AMPLITUDE = 1.0;
-    const LERP_SPEED = 0.06;
-    const FIELD_STRENGTH = 10;
-
-    let mouse = { x: width / 2, y: height / 2 };
-    let virtualMouse = { x: width / 2, y: height / 2 };
-    let lastMouseMoveTime = 0;
+    let mouse = { x: -1000, y: -1000, active: false };
+    let mouseTimeout = null;
 
     const particles = [];
+    const MAX_DISTANCE = 135;
+    const MAX_DISTANCE_SQ = MAX_DISTANCE * MAX_DISTANCE;
+    const MOUSE_RADIUS = 150;
+    const MOUSE_RADIUS_SQ = MOUSE_RADIUS * MOUSE_RADIUS;
 
     const createParticles = () => {
       particles.length = 0;
-      for (let i = 0; i < PARTICLE_COUNT; i++) {
-        const x = Math.random() * width;
-        const y = Math.random() * height;
+      const count = Math.min(90, Math.max(40, Math.floor((width * height) / 15000)));
+      for (let i = 0; i < count; i++) {
+        const vx = (Math.random() - 0.5) * 0.4;
+        const vy = (Math.random() - 0.5) * 0.4;
         particles.push({
-          t: Math.random() * 100,
-          speed: 0.01 + Math.random() * 0.015,
-          xFactor: -50 + Math.random() * 100,
-          yFactor: -50 + Math.random() * 100,
-          mx: x,
-          my: y,
-          cx: x,
-          cy: y,
-          randomRadiusOffset: (Math.random() - 0.5) * 2,
-          size: 2.0 + Math.random() * 2.0,
-          baseAlpha: 0.20 + Math.random() * 0.12,
-          pulseSpeed: 1.5 + Math.random() * 1.5
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: Math.abs(vx) < 0.08 ? (vx < 0 ? -0.15 : 0.15) : vx,
+          vy: Math.abs(vy) < 0.08 ? (vy < 0 ? -0.15 : 0.15) : vy,
+          radius: 1.2 + Math.random() * 1.3,
+          baseAlpha: 0.25 + Math.random() * 0.35,
+          pulse: Math.random() * Math.PI * 2,
+          pulseSpeed: 0.008 + Math.random() * 0.015
         });
       }
     };
@@ -601,94 +592,117 @@ document.addEventListener('DOMContentLoaded', () => {
       canvas.style.height = height + 'px';
       ctx.setTransform(1, 0, 0, 1, 0, 0);
       ctx.scale(dpr, dpr);
+      createParticles();
     };
 
-    const handleMouseMove = (e) => {
+    const handlePointerMove = (e) => {
       mouse.x = e.clientX;
       mouse.y = e.clientY;
-      lastMouseMoveTime = Date.now();
+      mouse.active = true;
+
+      if (mouseTimeout) clearTimeout(mouseTimeout);
+      mouseTimeout = setTimeout(() => {
+        mouse.active = false;
+      }, 3000);
     };
 
-    const handleTouchMove = (e) => {
-      if (e.touches && e.touches[0]) {
-        mouse.x = e.touches[0].clientX;
-        mouse.y = e.touches[0].clientY;
-        lastMouseMoveTime = Date.now();
-      }
+    const handlePointerLeave = () => {
+      mouse.active = false;
+      mouse.x = -1000;
+      mouse.y = -1000;
     };
 
     window.addEventListener('resize', handleResize);
-    window.addEventListener('mousemove', handleMouseMove, { passive: true });
-    window.addEventListener('touchmove', handleTouchMove, { passive: true });
+    window.addEventListener('mousemove', handlePointerMove, { passive: true });
+    window.addEventListener('touchmove', (e) => {
+      if (e.touches && e.touches[0]) {
+        handlePointerMove(e.touches[0]);
+      }
+    }, { passive: true });
+    document.addEventListener('mouseleave', handlePointerLeave);
 
     handleResize();
-    createParticles();
 
     const render = () => {
-      clock += 1;
-
       ctx.clearRect(0, 0, width, height);
 
-      let targetX = mouse.x;
-      let targetY = mouse.y;
-
-      if (Date.now() - lastMouseMoveTime > 2000) {
-        const time = clock * 0.012;
-        targetX = width / 2 + Math.sin(time * 0.5) * (width * 0.25);
-        targetY = height / 2 + Math.cos(time * 0.5 * 2) * (height * 0.2);
-      }
-
-      const smoothFactor = 0.06;
-      virtualMouse.x += (targetX - virtualMouse.x) * smoothFactor;
-      virtualMouse.y += (targetY - virtualMouse.y) * smoothFactor;
-
-      const vX = virtualMouse.x;
-      const vY = virtualMouse.y;
-      const globalRotation = clock * 0.0025;
-
+      // 1. Update positions & draw particles
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
-        p.t += p.speed / 2;
 
-        const driftX = p.mx + Math.sin(p.t * 0.3 + p.xFactor) * 20;
-        const driftY = p.my + Math.cos(p.t * 0.3 + p.yFactor) * 20;
+        // Organic pulse / twinkle
+        p.pulse += p.pulseSpeed;
+        const currentAlpha = Math.min(0.65, Math.max(0.18, p.baseAlpha + Math.sin(p.pulse) * 0.12));
 
-        const dx = driftX - vX;
-        const dy = driftY - vY;
-        const dist = Math.sqrt(dx * dx + dy * dy);
+        // Smooth mouse interaction (subtle fluid push response)
+        if (mouse.active) {
+          const mdx = p.x - mouse.x;
+          const mdy = p.y - mouse.y;
+          const mDistSq = mdx * mdx + mdy * mdy;
 
-        let destX = driftX;
-        let destY = driftY;
-
-        if (dist < MAGNET_RADIUS) {
-          const angle = Math.atan2(dy, dx) + globalRotation;
-          const wave = Math.sin(p.t * WAVE_SPEED + angle) * (0.5 * WAVE_AMPLITUDE * 12);
-          const deviation = p.randomRadiusOffset * (6 / (FIELD_STRENGTH + 0.1));
-          const currentRingRadius = RING_RADIUS + wave + deviation;
-
-          destX = vX + currentRingRadius * Math.cos(angle);
-          destY = vY + currentRingRadius * Math.sin(angle);
+          if (mDistSq < MOUSE_RADIUS_SQ && mDistSq > 0) {
+            const mDist = Math.sqrt(mDistSq);
+            const force = (1 - mDist / MOUSE_RADIUS) * 0.5;
+            const angle = Math.atan2(mdy, mdx);
+            p.x += Math.cos(angle) * force;
+            p.y += Math.sin(angle) * force;
+          }
         }
 
-        p.cx += (destX - p.cx) * LERP_SPEED;
-        p.cy += (destY - p.cy) * LERP_SPEED;
+        // Natural movement
+        p.x += p.vx;
+        p.y += p.vy;
 
-        const distToMouse = Math.sqrt(Math.pow(p.cx - vX, 2) + Math.pow(p.cy - vY, 2));
-        const distFromRing = Math.abs(distToMouse - RING_RADIUS);
-        let scaleFactor = 1 - distFromRing / 130;
-        scaleFactor = Math.max(0.7, Math.min(1.3, scaleFactor));
+        // Soft wrap at bounds
+        if (p.x < -10) p.x = width + 10;
+        else if (p.x > width + 10) p.x = -10;
+        if (p.y < -10) p.y = height + 10;
+        else if (p.y > height + 10) p.y = -10;
 
-        const pulse = Math.sin(p.t * p.pulseSpeed) * 0.05;
-        const currentAlpha = Math.min(0.32, Math.max(0.18, p.baseAlpha + pulse));
-        const currentSize = p.size * scaleFactor;
-
-        ctx.shadowBlur = 6;
-        ctx.shadowColor = `rgba(255, 255, 255, ${ (currentAlpha * 0.6).toFixed(3) })`;
-
+        // Draw clean particle dot
         ctx.beginPath();
-        ctx.arc(p.cx, p.cy, currentSize, 0, Math.PI * 2);
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(255, 255, 255, ${currentAlpha.toFixed(3)})`;
         ctx.fill();
+
+        // Subtle mouse connection line if near mouse cursor
+        if (mouse.active) {
+          const mdx = p.x - mouse.x;
+          const mdy = p.y - mouse.y;
+          const mDistSq = mdx * mdx + mdy * mdy;
+          if (mDistSq < MOUSE_RADIUS_SQ) {
+            const mDist = Math.sqrt(mDistSq);
+            const lineAlpha = (1 - mDist / MOUSE_RADIUS) * 0.18;
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(mouse.x, mouse.y);
+            ctx.strokeStyle = `rgba(255, 255, 255, ${lineAlpha.toFixed(3)})`;
+            ctx.lineWidth = 0.6;
+            ctx.stroke();
+          }
+        }
+      }
+
+      // 2. Draw constellation connection lines between nearby particles
+      for (let i = 0; i < particles.length; i++) {
+        const p1 = particles[i];
+        for (let j = i + 1; j < particles.length; j++) {
+          const p2 = particles[j];
+          const dx = p2.x - p1.x;
+          const dy = p2.y - p1.y;
+          const distSq = dx * dx + dy * dy;
+
+          if (distSq < MAX_DISTANCE_SQ) {
+            const dist = Math.sqrt(distSq);
+            const lineAlpha = (1 - dist / MAX_DISTANCE) * 0.15;
+            ctx.beginPath();
+            ctx.moveTo(p1.x, p1.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.strokeStyle = `rgba(240, 248, 255, ${lineAlpha.toFixed(3)})`;
+            ctx.lineWidth = 0.6;
+            ctx.stroke();
+          }
+        }
       }
 
       animId = requestAnimationFrame(render);
@@ -698,7 +712,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const prefersReducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const updateState = () => {
-      const active = isDarkMode() && !prefersReducedMotion();
+      const active = isDarkMode() && !prefersReducedMotion() && !document.hidden;
       if (active) {
         if (!animId) {
           animId = requestAnimationFrame(render);
@@ -721,6 +735,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     observer.observe(document.documentElement, { attributes: true });
 
+    document.addEventListener('visibilitychange', updateState);
+
     const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     if (motionQuery.addEventListener) {
       motionQuery.addEventListener('change', updateState);
@@ -729,7 +745,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateState();
   };
 
-  initAntigravityParticles();
+  initConnectedParticleNetwork();
 
   // 12. Magnetic Hover Effect for Buttons & Interactive Elements
   const initMagneticButtons = () => {
