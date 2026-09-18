@@ -264,12 +264,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 7. Contact Form Handling Logic (WhatsApp Redirection Integration)
+  // 7. Contact Form Handling Logic (Redirection to Thank You Page & WhatsApp Integration)
   const contactForm = document.getElementById('contact-page-form');
   const responseBox = document.getElementById('form-response-msg');
   const submitBtn = document.getElementById('form-submit-btn');
 
-  if (contactForm && responseBox && submitBtn) {
+  if (contactForm && submitBtn) {
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
 
@@ -280,16 +280,25 @@ document.addEventListener('DOMContentLoaded', () => {
       const message = document.getElementById('form-message')?.value.trim();
 
       if (!name || !email || !phone || !service || !message) {
-        responseBox.className = 'form-response-box error';
-        responseBox.textContent = 'Please fill out all required fields.';
-        responseBox.style.display = 'block';
+        if (responseBox) {
+          responseBox.className = 'form-response-box error';
+          responseBox.textContent = 'Please fill out all required fields.';
+          responseBox.style.display = 'block';
+        }
         return;
       }
 
       // Indicate loading state
       const originalBtnText = submitBtn.innerHTML;
       submitBtn.disabled = true;
-      submitBtn.innerHTML = 'Connecting to WhatsApp...';
+      submitBtn.innerHTML = 'Submitting...';
+
+      // Store name in sessionStorage for personalization on Thank You page
+      try {
+        sessionStorage.setItem('thankyou_name', name);
+      } catch (err) {
+        console.error('sessionStorage error:', err);
+      }
 
       // Format WhatsApp Message
       const whatsappNumber = '919400810886';
@@ -303,19 +312,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(whatsappText)}`;
 
-      setTimeout(() => {
-        responseBox.className = 'form-response-box success';
-        responseBox.innerHTML = '<strong>Redirecting to WhatsApp...</strong><br>Opening WhatsApp to send your inquiry directly to Ahammed Rishan.';
-        responseBox.style.display = 'block';
-
-        // Open WhatsApp in a new tab / app window
-        window.open(whatsappUrl, '_blank');
-
-        contactForm.reset();
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalBtnText;
-      }, 500);
+      // Open WhatsApp in new tab and redirect current tab to thank-you.html
+      window.open(whatsappUrl, '_blank');
+      window.location.href = 'thank-you.html';
     });
+  }
+
+  // Personalize Thank You Page message if name exists in sessionStorage
+  const thankYouMsg = document.getElementById('thank-you-msg');
+  if (thankYouMsg) {
+    try {
+      const savedName = sessionStorage.getItem('thankyou_name');
+      if (savedName) {
+        thankYouMsg.textContent = `Thank you, ${savedName}! Your message has been received successfully. I appreciate your interest and will get back to you within 24 hours.`;
+        sessionStorage.removeItem('thankyou_name');
+      }
+    } catch (err) {
+      console.error('sessionStorage error:', err);
+    }
   }
 
 

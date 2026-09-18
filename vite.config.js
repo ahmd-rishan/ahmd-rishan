@@ -12,6 +12,7 @@ export default defineConfig({
         services: resolve(__dirname, 'services.html'),
         work: resolve(__dirname, 'work.html'),
         contact: resolve(__dirname, 'contact.html'),
+        thankYou: resolve(__dirname, 'thank-you.html'),
       },
     },
   },

@@ -382,14 +382,37 @@ button {
 .hero-scroll-indicator {
   position: absolute;
   left: 1.25rem;
-  bottom: 4rem;
+  bottom: 3.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.hero-scroll-indicator span {
+  font-family: var(--font-heading);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  color: var(--text-dark-secondary);
   writing-mode: vertical-rl;
   transform: rotate(180deg);
-  font-family: var(--font-heading);
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 2px;
+}
+
+.hero-scroll-indicator .scroll-arrow {
   color: var(--text-dark-secondary);
+  animation: scrollArrowBounce 2s infinite ease-in-out;
+}
+
+@keyframes scrollArrowBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(4px);
+  }
 }
 
 .hero-container {
@@ -3858,6 +3881,106 @@ html[data-theme="dark"] {
 html[data-theme="dark"] #particle-canvas,
 [data-theme="dark"] #particle-canvas {
   opacity: 1;
+}
+
+/* ==========================================================================
+   THANK YOU PAGE STYLES
+   ========================================================================== */
+.thank-you-hero-section {
+  padding-top: calc(var(--nav-height) + 3.5rem);
+  padding-bottom: clamp(3rem, 5vw, 5rem);
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.thank-you-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.thank-you-card {
+  position: relative;
+  max-width: 680px;
+  width: 100%;
+  padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3rem);
+  background-color: var(--card-light);
+  border: 1px solid var(--border-light);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+html[data-theme="dark"] .thank-you-card,
+[data-theme="dark"] .thank-you-card {
+  background-color: var(--card-dark);
+  border-color: var(--border-dark);
+}
+
+.success-icon-badge {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: var(--accent-lime);
+  color: var(--bg-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0 20px rgba(212, 255, 0, 0.4);
+}
+
+.thank-you-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+
+.thank-you-subtext {
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
+  color: var(--text-dark-secondary);
+  line-height: 1.6;
+  max-width: 520px;
+  margin-bottom: 2.25rem;
+}
+
+html[data-theme="dark"] .thank-you-subtext,
+[data-theme="dark"] .thank-you-subtext {
+  color: var(--text-light-secondary);
+}
+
+.thank-you-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.thank-you-annotation {
+  position: absolute;
+  right: -25px;
+  bottom: -20px;
+  font-family: var(--font-script);
+  font-size: clamp(1.6rem, 2.2vw, 2rem);
+  color: var(--accent-lime);
+  transform: rotate(-6deg);
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .thank-you-annotation {
+    position: static;
+    margin-top: 1.5rem;
+    transform: rotate(-3deg);
+  }
 }
 
 
