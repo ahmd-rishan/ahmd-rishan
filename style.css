@@ -3221,33 +3221,212 @@ html.theme-transition *::after {
    WORK PAGE STYLING & EDITORIAL SHOWCASE
    ========================================================================== */
 
+/* ===== WORK / PORTFOLIO HERO ===== */
 .work-hero-section {
-  padding-top: clamp(6rem, 10vh, 8.5rem);
-  padding-bottom: 2.25rem;
+  padding-top: calc(var(--nav-height) + 3rem);
+  padding-bottom: 3rem;
+  overflow: hidden;
 }
 
-.work-hero-header {
-  max-width: 800px;
-  margin-bottom: 3.5rem;
+.work-hero-inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 3rem;
+  align-items: flex-end;
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.work-hero-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.work-hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+}
+
+.work-hero-eyebrow-line {
+  width: 40px;
+  height: 2px;
+  background-color: var(--accent-lime);
+  flex-shrink: 0;
+}
+
+.work-hero-eyebrow-text {
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--text-dark-secondary);
 }
 
 .work-hero-title {
   font-family: var(--font-display);
-  font-size: clamp(3.2rem, 7vw, 6.5rem);
   font-weight: 700;
-  line-height: 0.95;
-  letter-spacing: -0.03em;
   text-transform: uppercase;
-  margin-top: 1rem;
-  margin-bottom: 1.5rem;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin-bottom: 2rem;
+}
+
+.work-hero-title .title-line-sm {
+  display: block;
+  font-size: clamp(1.1rem, 2.2vw, 1.9rem);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--text-dark-secondary);
+  margin-bottom: 0.2rem;
+}
+
+.work-hero-title .title-line-lg {
+  display: block;
+  font-size: clamp(3rem, 7vw, 6.2rem);
+  line-height: 0.92;
+  color: var(--text-dark-primary);
+}
+
+.work-hero-title .title-line-lg .accent-text {
+  color: var(--accent-lime);
 }
 
 .work-hero-subtext {
-  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  font-size: clamp(0.9rem, 1.3vw, 1rem);
   color: var(--text-dark-secondary);
-  line-height: 1.6;
-  max-width: 680px;
+  line-height: 1.65;
+  max-width: 460px;
+  margin-bottom: 2.25rem;
 }
+
+.work-hero-stats-strip {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.work-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.work-stat-num {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--text-dark-primary);
+}
+
+.work-stat-label {
+  font-family: var(--font-heading);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-dark-secondary);
+}
+
+.work-stat-divider {
+  width: 1px;
+  height: 40px;
+  background-color: var(--border-light);
+  flex-shrink: 0;
+}
+
+/* Right decorative column */
+.work-hero-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 1.25rem;
+  padding-bottom: 0.5rem;
+}
+
+.work-hero-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  border: 1px solid var(--border-light);
+  text-align: center;
+  gap: 0.25rem;
+  position: relative;
+}
+
+.work-hero-badge-num {
+  font-family: var(--font-display);
+  font-size: 2.8rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--text-dark-primary);
+  letter-spacing: -0.04em;
+}
+
+.work-hero-badge-label {
+  font-family: var(--font-heading);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-dark-secondary);
+}
+
+.work-hero-badge::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border-radius: 50%;
+  border: 1px dashed var(--border-light);
+  animation: rotateSlow 20s linear infinite;
+}
+
+@keyframes rotateSlow {
+  to { transform: rotate(360deg); }
+}
+
+.work-hero-kw-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.4rem;
+  font-family: var(--font-heading);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-dark-secondary);
+}
+
+.work-hero-kw-col span.kw-active {
+  color: var(--text-dark-primary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .work-hero-inner {
+    grid-template-columns: 1fr;
+  }
+  .work-hero-right {
+    display: none;
+  }
+  .work-hero-stats-strip {
+    gap: 1.5rem;
+  }
+}
+
+
 
 /* Work Filter Bar */
 .work-filter-bar {
