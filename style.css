@@ -3856,7 +3856,7 @@ main.page-exiting {
 }
 
 /* ==========================================================================
-   DARK THEME OVERRIDES & ANTIGRAVITY PARTICLE EFFECT
+   DARK THEME OVERRIDES
    ========================================================================== */
 html[data-theme="dark"] {
   --bg-light: #0E0E0E;
@@ -3864,23 +3864,6 @@ html[data-theme="dark"] {
   --text-dark-primary: #FFFFFF;
   --text-dark-secondary: #9095A0;
   --border-light: rgba(255, 255, 255, 0.12);
-}
-
-#particle-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-html[data-theme="dark"] #particle-canvas,
-[data-theme="dark"] #particle-canvas {
-  opacity: 1;
 }
 
 /* ==========================================================================
