@@ -1,6 +1,21 @@
-// ==========================================================================
-// AHAMMED RISHAN® PORTFOLIO — MAIN INTERACTION LOGIC
-// ==========================================================================
+import Lenis from 'lenis';
+import 'lenis/dist/lenis.css';
+
+// Initialize Lenis Smooth Scroll System
+const lenis = new Lenis({
+  lerp: 0.075,
+  smoothWheel: true,
+  wheelMultiplier: 0.9,
+  anchors: true,
+  respectReducedMotion: true,
+});
+
+function raf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
+}
+
+requestAnimationFrame(raf);
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -70,6 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   window.addEventListener('scroll', checkNavbarTheme);
+  lenis.on('scroll', checkNavbarTheme);
   checkNavbarTheme();
 
   // 2. Mobile Menu Toggle
